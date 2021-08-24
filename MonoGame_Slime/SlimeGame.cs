@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonoGame_Slime.GameCore;
 
 namespace MonoGame_Slime
 {
@@ -22,14 +23,13 @@ namespace MonoGame_Slime
         public SlimeGame()
         {
 
-            // Graphics Settings
+            // Graphics
             _graphics = new GraphicsDeviceManager(this);
             _graphics.PreferredBackBufferWidth = 1920;
             _graphics.PreferredBackBufferHeight = 1080;
 
 
-
-
+            // Content 
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
@@ -45,7 +45,11 @@ namespace MonoGame_Slime
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            // Load Recourses
+            Arts.Load(Content);
+            
+            
+            
         }
 
         protected override void Update(GameTime gameTime)
@@ -62,9 +66,13 @@ namespace MonoGame_Slime
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            _spriteBatch.Begin();
+            _spriteBatch.Draw(Arts.Player, new Vector2(200, 200), Color.White);
+            _spriteBatch.End();
+            
 
             base.Draw(gameTime);
         }
+
     }
 }
