@@ -7,7 +7,7 @@ namespace MonoGame_Slime
         [STAThread]
         static void Main()
         {
-            using (var game = new Game1())
+            using (var game = new SlimeGame())
                 game.Run();
         }
     }

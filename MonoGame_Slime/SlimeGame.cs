@@ -4,14 +4,32 @@ using Microsoft.Xna.Framework.Input;
 
 namespace MonoGame_Slime
 {
-    public class Game1 : Game
+    public class SlimeGame : Game
     {
+
+        // Singleton
+        public static SlimeGame Instance { get; private set; }
+
+
+        // Graphics
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        public Game1()
+
+        // Input
+        private KeyboardState _keyboardState; // Global Key State
+
+        public SlimeGame()
         {
+
+            // Graphics Settings
             _graphics = new GraphicsDeviceManager(this);
+            _graphics.PreferredBackBufferWidth = 1920;
+            _graphics.PreferredBackBufferHeight = 1080;
+
+
+
+
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
