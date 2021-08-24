@@ -4,9 +4,11 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Background.png</File>
     <File>C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Player.png</File>
   </SourceFiles>
   <DestFiles>
+    <File>World.png</File>
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>

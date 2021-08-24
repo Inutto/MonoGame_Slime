@@ -11,21 +11,26 @@ namespace MonoGame_Slime.GameCore
     /// <summary>
     /// The container of all game objects. Can only created by once. (Singleton)
     /// </summary>
-    class World
+    class World : Object
     {
         // Rotation
-        public Vector2 center;          // the rotation center, also the center of the world
-        public float direction;         // the global orientation of the world
+        public static Vector2 center;          // the rotation center, also the center of the world
+        public static float direction;         // the global orientation of the world
 
         // Child
         public List<Object> objectList; // store all the objects
 
-        public void Update()
-        {
 
+        public World()
+        {
+            image = Arts.World;
+            center = new Vector2(100, -200);
+            direction = 0f;
+
+            objectList = new List<Object>();
         }
 
-        public void Draw()
+        public void Update()
         {
 
         }

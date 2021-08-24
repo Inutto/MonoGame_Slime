@@ -20,6 +20,10 @@ namespace MonoGame_Slime
         // Input
         private KeyboardState _keyboardState; // Global Key State
 
+
+        // Gameplay
+        private World world;
+
         public SlimeGame()
         {
 
@@ -47,6 +51,9 @@ namespace MonoGame_Slime
 
             // Load Recourses
             Arts.Load(Content);
+
+
+            world = new World();
             
             
             
@@ -66,8 +73,14 @@ namespace MonoGame_Slime
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+            // Drawing
             _spriteBatch.Begin();
-            _spriteBatch.Draw(Arts.Player, new Vector2(200, 200), Color.White);
+
+
+            world.Draw(_spriteBatch);
+
+
+
             _spriteBatch.End();
             
 

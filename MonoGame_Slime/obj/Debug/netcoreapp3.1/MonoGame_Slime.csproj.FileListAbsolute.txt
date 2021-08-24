@@ -23,3 +23,5 @@ C:\Users\u1330202\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\obj\Debug\netco
 C:\Users\u1330202\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\obj\Debug\netcoreapp3.1\MonoGame_Slime.pdb
 C:\Users\u1330202\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\obj\Debug\netcoreapp3.1\MonoGame_Slime.genruntimeconfig.cache
 C:\Users\u1330202\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\bin\Debug\netcoreapp3.1\Content\Player.xnb
+C:\Users\u1330202\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\bin\Debug\netcoreapp3.1\Content\Background.xnb
+C:\Users\u1330202\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\bin\Debug\netcoreapp3.1\Content\World.xnb

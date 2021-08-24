@@ -14,9 +14,14 @@ namespace MonoGame_Slime.GameCore
         protected Texture2D image;
         protected Color color = Color.White;
 
-        public Vector2 position;
+        public Vector2 position; // absolute position
         public Vector2 velocity; // for slime
 
+        private Vector2 GetCenterPosition()
+        {
+            if (image == null) return Vector2.Zero;
+            return new Vector2(image.Width, image.Height);
+        }
 
         public virtual void Update()
         {
@@ -25,7 +30,7 @@ namespace MonoGame_Slime.GameCore
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            // Draw the sprite
+            spriteBatch.Draw(image, position, null, color, World.direction, World.center, 1f, 0, 0);
         }
 
     }
