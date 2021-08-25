@@ -75,8 +75,8 @@ namespace MonoGame_Slime
                 Exit();
 
             // Object
-            world.Update();
-            player.Update();
+            world.Update(gameTime);
+            player.Update(gameTime);
             
 
             base.Update(gameTime);

@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using MonoGame.Extended;
+
 
 
 
@@ -13,9 +13,15 @@ namespace MonoGame_Slime.GameCore
     /// <summary>
     /// The container of all game objects. Can only created by once. (Singleton)
     /// </summary>
-    class World : Object
+    class World
     {
-        // Rotation
+
+        // Graphics
+        public Texture2D image;
+        public Color color = Color.White;
+
+        // Transform
+        public Vector2 position;
         public static Vector2 worldCenter;         // the rotation center, also the center of the world
         public static float worldRotation;         // the global orientation of the world
 
@@ -33,19 +39,17 @@ namespace MonoGame_Slime.GameCore
             objectList = new List<Object>();
 
             
+            
         }
 
-        public override void Update()
+        public void Update(GameTime gameTime)
         {
-
-            base.Update();
-            worldRotation = this.rotation;
-
             // Use Mouse to control Rotation
             MouseState mouseState = Mouse.GetState();
-            rotation = mouseState.X / 300f;
-            
+            worldRotation = mouseState.X / 300f;
 
+            
+        
         }
 
         public void AddObjectToWorldList(Object obj)
@@ -56,6 +60,12 @@ namespace MonoGame_Slime.GameCore
         public void RemoveObjectFromWorldList(Object obj)
         {
             objectList.Remove(obj);
+        }
+
+        public virtual void Draw(SpriteBatch spriteBatch)
+        {
+            var imageCenter = new Vector2(image.Width / 2, image.Height / 2);
+            spriteBatch.Draw(image, position, null, color, worldRotation, imageCenter, Vector2.One, SpriteEffects.None, 0f);
         }
 
     }

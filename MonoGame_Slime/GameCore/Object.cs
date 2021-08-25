@@ -4,19 +4,32 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonoGame.Extended;
+using MonoGame.Extended.Collisions;
 
 
 
 namespace MonoGame_Slime.GameCore
 {
-    class Object
+    class Object : ICollisionActor
     {
         protected Texture2D image;
         protected Color color = Color.White;
 
+        // Transform
         public Vector2 position; // absolute position, the center of image usually
         public Vector2 velocity; // for slime
         public float rotation;
+
+        public IShapeF Bounds { get; }
+
+        // Collisions
+
+        public Object()
+        {
+           
+        }
+
 
         private Vector2 GetCenterPosition()
         {
@@ -24,7 +37,7 @@ namespace MonoGame_Slime.GameCore
             return new Vector2(image.Width, image.Height);
         }
 
-        public virtual void Update()
+        public virtual void Update(GameTime gameTime)
         {
             
         }
@@ -35,5 +48,9 @@ namespace MonoGame_Slime.GameCore
             spriteBatch.Draw(image, position, null, color, rotation, imageCenter, Vector2.One, SpriteEffects.None, 0f);
         }
 
+        public void OnCollision(CollisionEventArgs collisionInfo)
+        {
+            
+        }
     }
 }
