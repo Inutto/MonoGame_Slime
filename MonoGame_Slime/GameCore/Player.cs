@@ -44,7 +44,7 @@ namespace MonoGame_Slime.GameCore
         {
             
             // Invert Y speed by some extend
-            velocity = new Vector2(velocity.X, velocity.Y * -0.5f);
+            velocity = new Vector2(velocity.X, -velocity.Y);
         }
     }
 }
