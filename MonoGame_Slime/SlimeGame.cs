@@ -15,6 +15,10 @@ namespace MonoGame_Slime
         // Graphics
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        public static int screenWidth = 1920;
+        public static int screenHeight = 1080;
+    
+
 
 
         // Input
@@ -29,10 +33,7 @@ namespace MonoGame_Slime
 
             // Graphics
             _graphics = new GraphicsDeviceManager(this);
-            _graphics.PreferredBackBufferWidth = 1920;
-            _graphics.PreferredBackBufferHeight = 1080;
-
-
+            
             // Content 
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
@@ -40,7 +41,6 @@ namespace MonoGame_Slime
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
 
             base.Initialize();
         }
@@ -49,22 +49,29 @@ namespace MonoGame_Slime
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+
+            // Full Screen 
+            _graphics.PreferredBackBufferWidth = screenWidth;
+            _graphics.PreferredBackBufferHeight = screenHeight;
+            _graphics.ApplyChanges();
+
             // Load Recourses
             Arts.Load(Content);
 
-
+            // Create World Instance
             world = new World();
             
-            
-            
+           
         }
 
         protected override void Update(GameTime gameTime)
         {
+            // Exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            // World Test
+            World.worldRotation += 0.01f;
 
             base.Update(gameTime);
         }
@@ -76,7 +83,7 @@ namespace MonoGame_Slime
             // Drawing
             _spriteBatch.Begin();
 
-
+            // Add World
             world.Draw(_spriteBatch);
 
 

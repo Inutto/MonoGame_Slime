@@ -14,8 +14,8 @@ namespace MonoGame_Slime.GameCore
     class World : Object
     {
         // Rotation
-        public static Vector2 center;          // the rotation center, also the center of the world
-        public static float direction;         // the global orientation of the world
+        public static Vector2 worldCenter;          // the rotation center, also the center of the world
+        public static float worldRotation;         // the global orientation of the world
 
         // Child
         public List<Object> objectList; // store all the objects
@@ -24,8 +24,9 @@ namespace MonoGame_Slime.GameCore
         public World()
         {
             image = Arts.World;
-            center = new Vector2(100, -200);
-            direction = 0f;
+            position = new Vector2(SlimeGame.screenWidth / 2, SlimeGame.screenHeight / 2);
+            worldCenter = new Vector2(SlimeGame.screenWidth / 2, SlimeGame.screenHeight / 2);
+            worldRotation = 0f;
 
             objectList = new List<Object>();
         }
