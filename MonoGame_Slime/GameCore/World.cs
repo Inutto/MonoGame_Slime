@@ -4,6 +4,8 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonoGame.Extended;
+
 
 
 namespace MonoGame_Slime.GameCore
@@ -14,7 +16,7 @@ namespace MonoGame_Slime.GameCore
     class World : Object
     {
         // Rotation
-        public static Vector2 worldCenter;          // the rotation center, also the center of the world
+        public static Vector2 worldCenter;         // the rotation center, also the center of the world
         public static float worldRotation;         // the global orientation of the world
 
         // Child
@@ -24,16 +26,36 @@ namespace MonoGame_Slime.GameCore
         public World()
         {
             image = Arts.World;
-            position = new Vector2(SlimeGame.screenWidth / 2, SlimeGame.screenHeight / 2);
+            position = new Vector2(SlimeGame.screenWidth / 2 + 200f, SlimeGame.screenHeight / 2);
             worldCenter = new Vector2(SlimeGame.screenWidth / 2, SlimeGame.screenHeight / 2);
             worldRotation = 0f;
 
             objectList = new List<Object>();
+
+            
         }
 
-        public void Update()
+        public override void Update()
         {
 
+            base.Update();
+            worldRotation = this.rotation;
+
+            // Use Mouse to control Rotation
+            MouseState mouseState = Mouse.GetState();
+            rotation = mouseState.X / 300f;
+            
+
+        }
+
+        public void AddObjectToWorldList(Object obj)
+        {
+            objectList.Add(obj);
+        }
+
+        public void RemoveObjectFromWorldList(Object obj)
+        {
+            objectList.Remove(obj);
         }
 
     }

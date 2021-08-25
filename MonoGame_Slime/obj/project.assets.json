@@ -83,6 +83,18 @@
           }
         }
       },
+      "MonoGame.Extended.Collisions/3.8.0": {
+        "type": "package",
+        "dependencies": {
+          "MonoGame.Extended": "3.8.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/MonoGame.Extended.Collisions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/MonoGame.Extended.Collisions.dll": {}
+        }
+      },
       "MonoGame.Framework.DesktopGL/3.8.0.1641": {
         "type": "package",
         "compile": {
@@ -260,6 +272,18 @@
         "monogame.extended.nuspec"
       ]
     },
+    "MonoGame.Extended.Collisions/3.8.0": {
+      "sha512": "Ov4xQQm/73/d/JvcwL5FXmuCLcGVEjk+vB2EvhmCtyEIh9ggMXK3sYfyyIKAxG+w01VthGUSwpd3F+AOMLeoSg==",
+      "type": "package",
+      "path": "monogame.extended.collisions/3.8.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/MonoGame.Extended.Collisions.dll",
+        "monogame.extended.collisions.3.8.0.nupkg.sha512",
+        "monogame.extended.collisions.nuspec"
+      ]
+    },
     "MonoGame.Framework.DesktopGL/3.8.0.1641": {
       "sha512": "rJQlrlHQbnOECYV6EcQ8GlGRQ2lzPTroXQcyyOZ0ki+BQRSJEN2zVBm9skqLiXya348aGAfTSSGTaSKjAy9NaA==",
       "type": "package",
@@ -321,6 +345,7 @@
     ".NETCoreApp,Version=v3.1": [
       "MonoGame.Content.Builder.Task >= 3.8.0.1641",
       "MonoGame.Extended >= 3.8.0",
+      "MonoGame.Extended.Collisions >= 3.8.0",
       "MonoGame.Framework.DesktopGL >= 3.8.0.1641"
     ]
   },
@@ -375,6 +400,10 @@
             "version": "[3.8.0.1641, )"
           },
           "MonoGame.Extended": {
+            "target": "Package",
+            "version": "[3.8.0, )"
+          },
+          "MonoGame.Extended.Collisions": {
             "target": "Package",
             "version": "[3.8.0, )"
           },

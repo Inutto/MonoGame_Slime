@@ -27,6 +27,7 @@ namespace MonoGame_Slime
 
         // Gameplay
         private World world;
+        private Player player;
 
         public SlimeGame()
         {
@@ -60,6 +61,9 @@ namespace MonoGame_Slime
 
             // Create World Instance
             world = new World();
+
+            // Create Player
+            player = new Player();
             
            
         }
@@ -70,8 +74,10 @@ namespace MonoGame_Slime
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // World Test
-            World.worldRotation += 0.01f;
+            // Object
+            world.Update();
+            player.Update();
+            
 
             base.Update(gameTime);
         }
@@ -85,6 +91,7 @@ namespace MonoGame_Slime
 
             // Add World
             world.Draw(_spriteBatch);
+            player.Draw(_spriteBatch);
 
 
 
