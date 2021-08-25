@@ -21,13 +21,15 @@ namespace MonoGame_Slime.GameCore
         public Vector2 velocity; // for slime
         public float rotation;
 
-        public IShapeF Bounds { get; }
-
         // Collisions
+        public IShapeF Bounds { get; }
+        public bool isGravity = false;
+
+
 
         public Object()
         {
-           
+            Bounds = 
         }
 
 
@@ -52,5 +54,8 @@ namespace MonoGame_Slime.GameCore
         {
             
         }
+
+
+
     }
 }
