@@ -2,6 +2,9 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame_Slime.GameCore;
+using MonoGame.Extended.Collisions;
+using MonoGame.Extended;
+
 
 namespace MonoGame_Slime
 {
@@ -30,11 +33,19 @@ namespace MonoGame_Slime
         private Player player;
         private Wall wall;
 
+        // Collisions
+        private CollisionComponent _collisionComponent;
+
+
         public SlimeGame()
         {
 
             // Graphics
             _graphics = new GraphicsDeviceManager(this);
+
+            // Collisions
+            _collisionComponent = new CollisionComponent(new RectangleF(0, 0, screenWidth, screenHeight));
+
             
             // Content 
             Content.RootDirectory = "Content";
@@ -43,6 +54,9 @@ namespace MonoGame_Slime
 
         protected override void Initialize()
         {
+
+            
+
             base.Initialize();
         }
 
@@ -61,14 +75,16 @@ namespace MonoGame_Slime
 
             // Create World Instance
             world = new World();
-
-            // Create Player
             player = new Player();
-
-            // Add Other Objects
             wall = new Wall();
-            
-           
+
+            // Collisions
+            _collisionComponent.Insert(player);
+            _collisionComponent.Insert(wall);
+
+
+
+
         }
 
         protected override void Update(GameTime gameTime)
@@ -81,6 +97,9 @@ namespace MonoGame_Slime
             world.Update(gameTime);
             player.Update(gameTime);
             wall.Update(gameTime);
+
+            // Collisions
+            _collisionComponent.Update(gameTime);
             
 
             base.Update(gameTime);
@@ -93,13 +112,13 @@ namespace MonoGame_Slime
             // Drawing
             _spriteBatch.Begin();
 
-            // Add World
+            // All the Object should be drawn here
             world.Draw(_spriteBatch);
             player.Draw(_spriteBatch);
             wall.Draw(_spriteBatch);
 
 
-
+            // End Draw
             _spriteBatch.End();
             
 

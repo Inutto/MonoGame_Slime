@@ -11,6 +11,7 @@
           "MonoGame.Content.Builder.Task": "3.8.0.1641",
           "MonoGame.Extended": "3.8.0",
           "MonoGame.Extended.Collisions": "3.8.0",
+          "MonoGame.Extended.Entities": "3.8.0",
           "MonoGame.Framework.DesktopGL": "3.8.0.1641"
         },
         "runtime": {
@@ -35,6 +36,17 @@
         },
         "runtime": {
           "lib/netstandard2.0/MonoGame.Extended.Collisions.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "MonoGame.Extended.Entities/3.8.0": {
+        "dependencies": {
+          "MonoGame.Extended": "3.8.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/MonoGame.Extended.Entities.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -126,6 +138,13 @@
       "sha512": "sha512-Ov4xQQm/73/d/JvcwL5FXmuCLcGVEjk+vB2EvhmCtyEIh9ggMXK3sYfyyIKAxG+w01VthGUSwpd3F+AOMLeoSg==",
       "path": "monogame.extended.collisions/3.8.0",
       "hashPath": "monogame.extended.collisions.3.8.0.nupkg.sha512"
+    },
+    "MonoGame.Extended.Entities/3.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qg/Kpe3z/5ZbRn/8kFCJaXCxWkR41EazIwaWnYOCCgTzb6QCqBr0hyNV0FdyyeETEWeDDJP1ZeGzaHnLwCl7kg==",
+      "path": "monogame.extended.entities/3.8.0",
+      "hashPath": "monogame.extended.entities.3.8.0.nupkg.sha512"
     },
     "MonoGame.Framework.DesktopGL/3.8.0.1641": {
       "type": "package",

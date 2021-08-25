@@ -16,7 +16,7 @@ namespace MonoGame_Slime.GameCore
 
         // Gravity
         public float gravity = 0.01f;
-        public float maxSpeed = 50f;
+        public float maxSpeed = 10f;
 
         public Player()
         {
