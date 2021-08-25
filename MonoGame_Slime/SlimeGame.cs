@@ -42,7 +42,6 @@ namespace MonoGame_Slime
 
         protected override void Initialize()
         {
-
             base.Initialize();
         }
 
