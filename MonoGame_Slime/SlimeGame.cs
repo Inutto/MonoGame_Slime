@@ -28,6 +28,7 @@ namespace MonoGame_Slime
         // Gameplay
         private World world;
         private Player player;
+        private Wall wall;
 
         public SlimeGame()
         {
@@ -63,6 +64,9 @@ namespace MonoGame_Slime
 
             // Create Player
             player = new Player();
+
+            // Add Other Objects
+            wall = new Wall();
             
            
         }
@@ -76,6 +80,7 @@ namespace MonoGame_Slime
             // Object
             world.Update(gameTime);
             player.Update(gameTime);
+            wall.Update(gameTime);
             
 
             base.Update(gameTime);
@@ -91,6 +96,7 @@ namespace MonoGame_Slime
             // Add World
             world.Draw(_spriteBatch);
             player.Draw(_spriteBatch);
+            wall.Draw(_spriteBatch);
 
 
 

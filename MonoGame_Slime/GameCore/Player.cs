@@ -21,7 +21,9 @@ namespace MonoGame_Slime.GameCore
         public Player()
         {
             image = Arts.Player;
-            position = new Microsoft.Xna.Framework.Vector2(SlimeGame.screenWidth / 2 + 100f, SlimeGame.screenHeight / 2);
+            position = new Microsoft.Xna.Framework.Vector2(
+                SlimeGame.screenWidth / 2 + 100f, 
+                SlimeGame.screenHeight / 2);
             Bounds = new CircleF(position, image.Width / 2);
         }
 
@@ -45,8 +47,13 @@ namespace MonoGame_Slime.GameCore
 
         public void OnCollision(CollisionEventArgs collisionInfo)
         {
-            // Invert Y speed by some extend
-            velocity = new Vector2(velocity.X, velocity.Y * -0.3f);
+            if(collisionInfo.Other is Wall)
+            {
+                // Invert Y speed by some extend
+                velocity = new Vector2(velocity.X, velocity.Y * -0.3f);
+            }
+
+            
         }
     }
 }

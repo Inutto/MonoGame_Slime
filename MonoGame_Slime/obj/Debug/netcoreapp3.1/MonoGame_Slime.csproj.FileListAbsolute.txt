@@ -28,3 +28,4 @@ C:\Users\u1330202\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\bin\Debug\netco
 C:\Users\u1330202\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\bin\Debug\netcoreapp3.1\MonoGame.Extended.dll
 C:\Users\u1330202\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\u1330202\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\bin\Debug\netcoreapp3.1\MonoGame.Extended.Collisions.dll
+C:\Users\u1330202\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\bin\Debug\netcoreapp3.1\Content\Wall.xnb

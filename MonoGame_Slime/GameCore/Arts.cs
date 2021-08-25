@@ -19,7 +19,7 @@ namespace MonoGame_Slime.GameCore
         {
             Player = content.Load<Texture2D>("Player");
             World = content.Load<Texture2D>("World");
-            // Wall = content.Load<Texture2D>("Resources/wall");
+            Wall = content.Load<Texture2D>("Wall");
         }
 
     }
