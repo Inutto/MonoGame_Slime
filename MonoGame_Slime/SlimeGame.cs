@@ -22,8 +22,6 @@ namespace MonoGame_Slime
         public static int screenHeight = 1080;
     
 
-
-
         // Input
         private KeyboardState _keyboardState; // Global Key State
 
@@ -32,6 +30,7 @@ namespace MonoGame_Slime
         private World world;
         private Player player;
         private Wall wall;
+
 
         // Collisions
         private CollisionComponent _collisionComponent;
@@ -42,6 +41,7 @@ namespace MonoGame_Slime
 
             // Graphics
             _graphics = new GraphicsDeviceManager(this);
+
 
             // Collisions
             _collisionComponent = new CollisionComponent(new RectangleF(0, 0, screenWidth, screenHeight));
@@ -55,20 +55,17 @@ namespace MonoGame_Slime
         protected override void Initialize()
         {
 
-            
-
             base.Initialize();
-        }
-
-        protected override void LoadContent()
-        {
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
-
 
             // Full Screen 
             _graphics.PreferredBackBufferWidth = screenWidth;
             _graphics.PreferredBackBufferHeight = screenHeight;
             _graphics.ApplyChanges();
+        }
+
+        protected override void LoadContent()
+        {
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // Load Recourses
             Arts.Load(Content);
@@ -81,8 +78,6 @@ namespace MonoGame_Slime
             // Collisions
             _collisionComponent.Insert(player);
             _collisionComponent.Insert(wall);
-
-
 
 
         }

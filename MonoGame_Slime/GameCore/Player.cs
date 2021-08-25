@@ -27,12 +27,6 @@ namespace MonoGame_Slime.GameCore
             Bounds = new CircleF(position, image.Width / 2);
         }
 
-        
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            base.Draw(spriteBatch);
-        }
 
         public override void Update(GameTime gameTime)
         {
@@ -47,12 +41,12 @@ namespace MonoGame_Slime.GameCore
 
         public void OnCollision(CollisionEventArgs collisionInfo)
         {
-            if(collisionInfo.Other is Wall)
-            {
-                // Invert Y speed by some extend
-                velocity = new Vector2(velocity.X, velocity.Y * -0.3f);
-            }
+            
+            // Invert Y speed by some extend
+            velocity = new Vector2(velocity.X, velocity.Y * -0.3f);
 
+            Console.WriteLine("Player Collisions");
+            
             
         }
     }
