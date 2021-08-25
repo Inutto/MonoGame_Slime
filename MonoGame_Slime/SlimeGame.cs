@@ -61,10 +61,7 @@ namespace MonoGame_Slime
             _graphics.PreferredBackBufferWidth = screenWidth;
             _graphics.PreferredBackBufferHeight = screenHeight;
             _graphics.ApplyChanges();
-        }
 
-        protected override void LoadContent()
-        {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // Load Recourses
@@ -79,6 +76,15 @@ namespace MonoGame_Slime
             _collisionComponent.Insert(player);
             _collisionComponent.Insert(wall);
 
+
+        }
+
+
+
+        protected override void LoadContent()
+        {
+            
+            // Try not to write somehting here
 
         }
 

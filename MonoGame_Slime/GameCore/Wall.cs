@@ -17,7 +17,7 @@ namespace MonoGame_Slime.GameCore
         public Wall()
         {
             image = Arts.Wall;
-            position = new Microsoft.Xna.Framework.Vector2(
+            position = new Vector2(
                 SlimeGame.screenWidth / 2 + 100f,
                 SlimeGame.screenHeight / 2 + 450f);
             var startPosX = position.X - image.Width / 2;
@@ -29,6 +29,7 @@ namespace MonoGame_Slime.GameCore
 
         public override void Update(GameTime gameTime)
         {
+            Bounds.Position = position;
             base.Update(gameTime);
         }
 

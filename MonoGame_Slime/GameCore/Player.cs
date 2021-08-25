@@ -36,6 +36,7 @@ namespace MonoGame_Slime.GameCore
 
             // Apply new speed 
             velocity += new Vector2(0, newSpeed);
+            Bounds.Position = position;
             base.Update(gameTime);
         }
 
@@ -43,11 +44,7 @@ namespace MonoGame_Slime.GameCore
         {
             
             // Invert Y speed by some extend
-            velocity = new Vector2(velocity.X, velocity.Y * -0.3f);
-
-            Console.WriteLine("Player Collisions");
-            
-            
+            velocity = new Vector2(velocity.X, velocity.Y * -0.5f);
         }
     }
 }
