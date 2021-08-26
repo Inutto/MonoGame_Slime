@@ -4,8 +4,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using MonoGame.Extended;
-using MonoGame.Extended.Collisions;
+
 
 
 
@@ -22,6 +21,8 @@ namespace MonoGame_Slime.GameCore
         public Vector2 position; // absolute position, the center of image usually
         public Vector2 velocity; // for slime
         public float rotation;
+
+        
 
         private Vector2 GetCenterPosition()
         {

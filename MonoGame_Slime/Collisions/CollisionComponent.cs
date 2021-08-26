@@ -71,8 +71,8 @@ namespace MonoGame_Slime.Collisions
 
             // Find the closet point from circle to rectanle (by finding the closestX and cloestY separately)
 
-            var halfWidth = wall.image.Width / 2;
-            var halfHeight = wall.image.Height / 2;
+            var halfWidth = wall.boundBox.Width / 2;
+            var halfHeight = wall.boundBox.Height / 2;
 
             SlimeGame.debugText_4 = halfWidth.ToString();
 

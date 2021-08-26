@@ -11,14 +11,29 @@ namespace MonoGame_Slime.GameCore
     class Wall : Object
     {
         // Collisions
+        public Rectangle boundBox;
 
-        public Wall(Vector2 _position, float _rotation = 0f)
+
+        
+        public Wall(Vector2 _centerPosition, Vector2 _size, float _rotation = 0f)
         {
+            // Graphics
             image = Arts.Wall;
-            position = _position;
+
+            var halfWidth = _size.X / 2;
+            var halfHeight = _size.Y / 2;
+
+            // Boundbox
+            var tx = (int)(_centerPosition.X - halfWidth);
+            var ty = (int)(_centerPosition.Y - halfHeight);
+            var width = (int)_size.X;
+            var height = (int)_size.Y;
+
+            boundBox = new Rectangle(tx, ty, width, height);
+
+            // Transform
+            position = _centerPosition;
             rotation = _rotation;
-            var startPosX = position.X - image.Width / 2;
-            var startPoxY = position.Y - image.Height / 2;
         }
 
         public override void Update(GameTime gameTime)
