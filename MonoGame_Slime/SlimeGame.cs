@@ -79,13 +79,16 @@ namespace MonoGame_Slime
 
             // Create World Instance
             world = new World();
-            player = new Player(new Vector2(400,400));
 
-            var boundBoxWall = new Vector2(200, 200);
+            
 
-            wall_1 = new Wall(new Vector2(400, 800), boundBoxWall);
-            wall_2 = new Wall(new Vector2(200, 500), boundBoxWall);
-            wall_3 = new Wall(new Vector2(700, 1200), boundBoxWall);
+            player = new Player(new Vector2(400, 400), 100);
+
+            var boundBoxWallSize = new Vector2(300, 300);
+
+            wall_1 = new Wall(new Vector2(400, 800), boundBoxWallSize);
+            wall_2 = new Wall(new Vector2(200, 500), boundBoxWallSize);
+            wall_3 = new Wall(new Vector2(700, 1200), boundBoxWallSize);
 
 
 

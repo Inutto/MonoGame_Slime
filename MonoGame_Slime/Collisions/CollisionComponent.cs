@@ -110,7 +110,7 @@ namespace MonoGame_Slime.Collisions
 
 
             var distance = MathF.Sqrt(MathF.Pow(closeX - newcx, 2) + MathF.Pow(closeY - newcy, 2));
-            var radius = player.image.Width / 2;
+            var radius = player.boundBox.radius;
 
             SlimeGame.debugText_3 = distance.ToString();
             

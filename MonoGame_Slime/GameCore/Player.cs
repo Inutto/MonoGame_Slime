@@ -2,24 +2,47 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using MonoGame.Extended.Collisions;
-using MonoGame.Extended;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 namespace MonoGame_Slime.GameCore
 {
+
+
+
+    struct Circle
+    {
+        public Vector2 position;
+        public float radius;
+
+        public Circle(Vector2 _position, float _radius)
+        {
+            position = _position;
+            radius = _radius;
+        }
+    }
+
+
     class Player : Object
     {
+
+
+        public Circle boundBox;
 
         // Gravity
         public float gravity = 0.0001f;
         public float maxSpeed = 10f;
 
-        public Player(Vector2 _position, float _rotation = 0f)
+        public Player(Vector2 _centerPosition, float _radius, float _rotation = 0f)
         {
+            // Graphics
             image = Arts.Player;
-            position = _position;
+
+            // Boundbox (Circle)
+            boundBox = new Circle(_centerPosition, _radius);
+
+            // Transform
+            position = _centerPosition;
             rotation = _rotation;
             
         }
