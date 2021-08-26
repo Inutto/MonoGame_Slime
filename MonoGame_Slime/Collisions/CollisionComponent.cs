@@ -59,7 +59,7 @@ namespace MonoGame_Slime.Collisions
             var originX = wall.position.X;
             var originY = wall.position.Y;
 
-            var r = wall.rotation;
+            var r = -wall.rotation;
             var cx = player.position.X;
             var cy = player.position.Y;
 
@@ -73,6 +73,8 @@ namespace MonoGame_Slime.Collisions
 
             var halfWidth = wall.image.Width / 2;
             var halfHeight = wall.image.Height / 2;
+
+            SlimeGame.debugText_4 = halfWidth.ToString();
 
             float closeX = 0f;
             float closeY = 0f;
@@ -111,7 +113,7 @@ namespace MonoGame_Slime.Collisions
             var radius = player.image.Width / 2;
 
             SlimeGame.debugText_3 = distance.ToString();
-            SlimeGame.debugText_4 = radius.ToString();
+            
 
 
             if (distance > radius)

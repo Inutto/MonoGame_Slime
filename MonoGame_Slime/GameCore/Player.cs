@@ -36,12 +36,14 @@ namespace MonoGame_Slime.GameCore
             // Apply new speed 
             velocity += new Vector2(0, newSpeed);
             
+            
             // Debug
             /*
             MouseState mouseState = Mouse.GetState();
             position.X = mouseState.X;
             position.Y = mouseState.Y;
             */
+            
             
 
 
@@ -54,7 +56,7 @@ namespace MonoGame_Slime.GameCore
             var velocityAdd = new Vector2(position.X - wall.position.X, position.Y - wall.position.Y);
             velocityAdd.Normalize();
             position += velocityAdd * 2f;
-            velocity = new Vector2(velocity.X, -velocity.Y * 0.4f);
+            velocity = new Vector2(velocity.X * 4f + velocityAdd.X, 0);
             wall.color = Color.Red;
             Console.WriteLine("Coli");
         }
