@@ -77,11 +77,24 @@ namespace MonoGame_Slime.GameCore
 
 
             var coll = eventArgs.coll;
+            var multiplyer = 2.0f;
+
+            
+
 
             // Modify Compensation vec
             var compensationVec = eventArgs.compensationVec;
             var compensationMagnitude = eventArgs.compensationMagnitude;
             compensationVec.Normalize();
+
+            if (coll is Wall)
+            {
+                compensationMagnitude *= multiplyer;
+            }
+            else
+            {
+
+            }
 
             // Move the player just out of the compensationvec direction
             position += compensationMagnitude * compensationVec;
