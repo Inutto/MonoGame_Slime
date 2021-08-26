@@ -12,13 +12,11 @@ namespace MonoGame_Slime.GameCore
     {
         // Collisions
 
-        public Wall()
+        public Wall(Vector2 _position, float _rotation = 0f)
         {
             image = Arts.Wall;
-            rotation = 0.9f;
-            position = new Vector2(
-                SlimeGame.screenWidth / 2 + 50f,
-                SlimeGame.screenHeight / 2 + 200f);
+            position = _position;
+            rotation = _rotation;
             var startPosX = position.X - image.Width / 2;
             var startPoxY = position.Y - image.Height / 2;
         }

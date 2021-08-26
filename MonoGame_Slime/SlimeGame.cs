@@ -29,7 +29,10 @@ namespace MonoGame_Slime
         // Gameplay
         private World world;
         private Player player;
-        private Wall wall;
+        private Wall wall_1;
+        private Wall wall_2;
+        private Wall wall_3;
+
 
 
         // Collisions
@@ -76,11 +79,20 @@ namespace MonoGame_Slime
 
             // Create World Instance
             world = new World();
-            player = new Player();
-            wall = new Wall();
+            player = new Player(new Vector2(400,400));
+
+            wall_1 = new Wall(new Vector2(400, 800));
+            wall_2 = new Wall(new Vector2(200, 500));
+            wall_3 = new Wall(new Vector2(700, 1200));
+
+
 
             _collisionComponent.AddPlayer(player);
-            _collisionComponent.AddWall(wall);
+            _collisionComponent.AddWall(wall_1);
+            _collisionComponent.AddWall(wall_2);
+
+            _collisionComponent.AddWall(wall_3);
+
 
 
             // Font
@@ -107,9 +119,15 @@ namespace MonoGame_Slime
             // Object
             world.Update(gameTime);
             player.Update(gameTime);
-            wall.Update(gameTime);
+            wall_1.Update(gameTime);
+            wall_2.Update(gameTime);
+            wall_3.Update(gameTime);
 
-            wall.rotation += 0.011f;
+            wall_1.rotation += 0.01f;
+
+            wall_3.rotation += 0.04f;
+
+
 
             // Collisions
             _collisionComponent.Update(gameTime);
@@ -128,7 +146,9 @@ namespace MonoGame_Slime
             // All the Object should be drawn here
             world.Draw(_spriteBatch);
             
-            wall.Draw(_spriteBatch);
+            wall_1.Draw(_spriteBatch);
+            wall_2.Draw(_spriteBatch);
+            wall_3.Draw(_spriteBatch);
             player.Draw(_spriteBatch);
 
             // Debug

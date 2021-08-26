@@ -16,12 +16,11 @@ namespace MonoGame_Slime.GameCore
         public float gravity = 0.0001f;
         public float maxSpeed = 10f;
 
-        public Player()
+        public Player(Vector2 _position, float _rotation = 0f)
         {
             image = Arts.Player;
-            position = new Microsoft.Xna.Framework.Vector2(
-                SlimeGame.screenWidth / 2, 
-                SlimeGame.screenHeight / 2 - 300f);
+            position = _position;
+            rotation = _rotation;
             
         }
 
