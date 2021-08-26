@@ -4,7 +4,7 @@ using System.Text;
 using MonoGame.Extended;
 using MonoGame.Extended.Collisions;
 using Microsoft.Xna.Framework;
-
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MonoGame_Slime.GameCore
 {
@@ -13,8 +13,6 @@ namespace MonoGame_Slime.GameCore
         // Collisions
         public Rectangle boundBox;
 
-
-        
         public Wall(Vector2 _centerPosition, Vector2 _size, float _rotation = 0f)
         {
             // Graphics
@@ -31,15 +29,36 @@ namespace MonoGame_Slime.GameCore
 
             boundBox = new Rectangle(tx, ty, width, height);
 
+
+            // Apply scale
+            var scaleX = (float)boundBox.Width / (float)image.Width;
+            var scaleY = (float)boundBox.Height / (float)image.Height;
+            scale = new Vector2(scaleX, scaleY);
+
             // Transform
             position = _centerPosition;
             rotation = _rotation;
             originPosition = _centerPosition;
+
+            
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+            SlimeGame.debugText_1 = scale.ToString();
+            SlimeGame.debugText_2 = image.Width.ToString();
+
+
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            base.Draw(spriteBatch);
+
+            // Just draw the bound
+
+            
         }
 
     }

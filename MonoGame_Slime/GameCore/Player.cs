@@ -81,7 +81,7 @@ namespace MonoGame_Slime.GameCore
             var velocityAdd = new Vector2(position.X - wall.position.X, position.Y - wall.position.Y);
             velocityAdd.Normalize();
             position += velocityAdd;
-            velocity = new Vector2(velocity.X + velocityAdd.X * 2f, 0);
+            velocity = new Vector2(velocity.X + velocityAdd.X * 4f, 0);
             wall.color = Color.Red;
             Console.WriteLine("Coli");
         }

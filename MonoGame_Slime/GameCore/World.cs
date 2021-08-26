@@ -61,10 +61,13 @@ namespace MonoGame_Slime.GameCore
                 var y = directionVec.Y;
 
 
+
+
                 var newX = cos * x - sin * y;
-                var newY = sin * x + cos + y;
+                var newY = sin * x + cos * y;
 
                 var newVec = new Vector2(newX, newY);
+
                 var newPos = newVec + worldCenter;
 
                 // Assign Position
