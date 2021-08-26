@@ -5,6 +5,7 @@ using System.Text;
 using MonoGame.Extended.Collisions;
 using MonoGame.Extended;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 namespace MonoGame_Slime.GameCore
 {
@@ -12,15 +13,15 @@ namespace MonoGame_Slime.GameCore
     {
 
         // Gravity
-        public float gravity = 0.01f;
+        public float gravity = 0.0001f;
         public float maxSpeed = 10f;
 
         public Player()
         {
             image = Arts.Player;
             position = new Microsoft.Xna.Framework.Vector2(
-                SlimeGame.screenWidth / 2 + 100f, 
-                SlimeGame.screenHeight / 2);
+                SlimeGame.screenWidth / 2, 
+                SlimeGame.screenHeight / 2 - 300f);
             
         }
 
@@ -28,11 +29,20 @@ namespace MonoGame_Slime.GameCore
         public override void Update(GameTime gameTime)
         {
             // Update Speed Value by gravity
+            /*
             var currentSpeed = velocity.Y;
             var newSpeed = MathF.Min(currentSpeed + gravity, maxSpeed);
 
             // Apply new speed 
             velocity += new Vector2(0, newSpeed);
+            */
+            // Debug
+            MouseState mouseState = Mouse.GetState();
+            position.X = mouseState.X;
+            position.Y = mouseState.Y;
+            
+
+
             base.Update(gameTime);
         }
 
@@ -40,6 +50,8 @@ namespace MonoGame_Slime.GameCore
         {
             // Invert Y speed by some extend
             velocity = new Vector2(velocity.X, 0);
+            wall.color = Color.Red;
+            Console.WriteLine("Coli");
         }
     }
 }

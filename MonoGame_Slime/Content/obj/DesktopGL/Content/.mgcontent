@@ -4,11 +4,13 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Debug.spritefont</File>
     <File>C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Player.png</File>
     <File>C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Wall.png</File>
     <File>C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/World.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

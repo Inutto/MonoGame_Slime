@@ -17,8 +17,8 @@ namespace MonoGame_Slime.GameCore
             image = Arts.Wall;
             rotation = 0.9f;
             position = new Vector2(
-                SlimeGame.screenWidth / 2 + 100f,
-                SlimeGame.screenHeight / 2 + 450f);
+                SlimeGame.screenWidth / 2 + 50f,
+                SlimeGame.screenHeight / 2 + 200f);
             var startPosX = position.X - image.Width / 2;
             var startPoxY = position.Y - image.Height / 2;
         }

@@ -35,6 +35,13 @@ namespace MonoGame_Slime
         // Collisions
         private CollisionComponent _collisionComponent;
 
+        // Debug
+        private SpriteFont font;
+        public static string debugText_1 = "";
+        public static string debugText_2 = "";
+        public static string debugText_3 = "";
+        public static string debugText_4 = "";
+
 
         public SlimeGame()
         {
@@ -76,6 +83,10 @@ namespace MonoGame_Slime
             _collisionComponent.AddWall(wall);
 
 
+            // Font
+            font = Content.Load<SpriteFont>("Debug");
+
+
         }
 
 
@@ -98,7 +109,7 @@ namespace MonoGame_Slime
             player.Update(gameTime);
             wall.Update(gameTime);
 
-            wall.rotation += 0.01f;
+            wall.rotation = 0.785398f;
 
             // Collisions
             _collisionComponent.Update(gameTime);
@@ -119,6 +130,14 @@ namespace MonoGame_Slime
             
             wall.Draw(_spriteBatch);
             player.Draw(_spriteBatch);
+
+            // Debug
+            _spriteBatch.DrawString(font, debugText_1, new Vector2(100, 100), Color.Black);
+            _spriteBatch.DrawString(font, debugText_2, new Vector2(100, 200), Color.Black);
+            _spriteBatch.DrawString(font, debugText_3, new Vector2(100, 300), Color.Black);
+            _spriteBatch.DrawString(font, debugText_4, new Vector2(100, 400), Color.Black);
+
+
 
 
             // End Draw

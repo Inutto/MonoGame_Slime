@@ -37,9 +37,6 @@ namespace MonoGame_Slime.GameCore
             worldRotation = 0f;
 
             objectList = new List<Object>();
-
-            
-            
         }
 
         public void Update(GameTime gameTime)
