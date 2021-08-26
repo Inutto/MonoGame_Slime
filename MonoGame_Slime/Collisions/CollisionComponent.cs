@@ -107,7 +107,7 @@ namespace MonoGame_Slime.Collisions
             // Calculate the distance with unrotated circle and compare with the radius of the circle
 
 
-            var distance = MathF.Sqrt(MathF.Pow(closeX - cx, 2) + MathF.Pow(closeY - cy, 2));
+            var distance = MathF.Sqrt(MathF.Pow(closeX - newcx, 2) + MathF.Pow(closeY - newcy, 2));
             var radius = player.image.Width / 2;
 
             SlimeGame.debugText_3 = distance.ToString();
