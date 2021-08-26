@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using MonoGame_Slime.Collisions;
 
 namespace MonoGame_Slime.GameCore
 {
@@ -24,7 +25,7 @@ namespace MonoGame_Slime.GameCore
     }
 
 
-    class Player : Object
+    class Player : GameObject
     {
 
 
@@ -75,15 +76,32 @@ namespace MonoGame_Slime.GameCore
             base.Update(gameTime);
         }
 
-        public void OnCollision(Wall wall)
+        public void OnCollision(CollisionEventArgs eventArgs)
         {
+
+            var wall = eventArgs.coll as Wall;
+
+            // Modify Compensation vec
+            var compensationVec = eventArgs.compensationVec;
+            var compensationMagnitude = eventArgs.compensationMagnitude;
+            compensationVec.Normalize();
+
             // Invert Y speed by some extend
             var velocityAdd = new Vector2(position.X - wall.position.X, position.Y - wall.position.Y);
             velocityAdd.Normalize();
-            position += velocityAdd;
-            velocity = new Vector2(velocity.X + velocityAdd.X * 4f, 0);
+
+            // Move the player just out of the compensationvec direction
+
+            position += compensationMagnitude * compensationVec;
+            velocity +=  compensationVec;
+
             wall.color = Color.Red;
-            Console.WriteLine("Coli");
+
+        }
+
+        public void AwayFromWall(Vector2 awayDirection)
+        {
+            
         }
     }
 }

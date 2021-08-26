@@ -3,8 +3,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame_Slime.GameCore;
 using MonoGame_Slime.Collisions;
-using MonoGame.Extended;
 using System.Collections.Generic;
+using System;
 
 
 namespace MonoGame_Slime
@@ -124,6 +124,8 @@ namespace MonoGame_Slime
                 world.AddObjectToWorldList(wall);
             }
 
+            // world.AddObjectToWorldList(player);
+
            
             // Font
             font = Content.Load<SpriteFont>("Debug");
@@ -184,6 +186,34 @@ namespace MonoGame_Slime
             
 
             base.Draw(gameTime);
+        }
+
+
+
+
+        // Tools
+
+        public static float GetDistance(Vector2 a, Vector2 b)
+        {
+            var distance = MathF.Sqrt(MathF.Pow(a.X - b.X, 2) + MathF.Pow(a.Y - b.Y, 2));
+            return distance;
+        }
+
+        public static Vector2 RotateVector2(Vector2 originVec, float rad)
+        {
+            var cos = MathF.Cos(rad);
+            var sin = MathF.Sin(rad);
+
+            var x = originVec.X;
+            var y = originVec.Y;
+
+            var newX = cos * x - sin * y;
+            var newY = sin * x + cos * y;
+
+            var newVec = new Vector2(newX, newY);
+
+            return newVec;
+
         }
 
     }

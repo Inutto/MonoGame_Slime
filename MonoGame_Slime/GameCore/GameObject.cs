@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace MonoGame_Slime.GameCore
 {
-    class Object
+    public class GameObject
     {
 
         // Graphics

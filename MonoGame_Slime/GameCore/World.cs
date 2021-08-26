@@ -25,7 +25,7 @@ namespace MonoGame_Slime.GameCore
         public static float worldRotation;         // the global orientation of the world
 
         // Child
-        public List<Object> objectList; // store all the objects
+        public List<GameObject> objectList; // store all the objects
 
 
         public World(Vector2 _center, Vector2 _size)
@@ -38,7 +38,7 @@ namespace MonoGame_Slime.GameCore
             worldRotation = 0f;
 
             // Objects
-            objectList = new List<Object>();
+            objectList = new List<GameObject>();
         }
 
         public void Update(GameTime gameTime)
@@ -53,20 +53,7 @@ namespace MonoGame_Slime.GameCore
                 var objPos = obj.originPosition;
                 var directionVec = objPos - worldCenter;
                 var r = worldRotation;
-
-                var cos = MathF.Cos(r);
-                var sin = MathF.Sin(r);
-
-                var x = directionVec.X;
-                var y = directionVec.Y;
-
-
-
-
-                var newX = cos * x - sin * y;
-                var newY = sin * x + cos * y;
-
-                var newVec = new Vector2(newX, newY);
+                var newVec = SlimeGame.RotateVector2(directionVec, worldRotation);
 
                 var newPos = newVec + worldCenter;
 
@@ -75,17 +62,14 @@ namespace MonoGame_Slime.GameCore
                 obj.rotation = worldRotation;
 
             }
-
-
-
         }
 
-        public void AddObjectToWorldList(Object obj)
+        public void AddObjectToWorldList(GameObject obj)
         {
             objectList.Add(obj);
         }
 
-        public void RemoveObjectFromWorldList(Object obj)
+        public void RemoveObjectFromWorldList(GameObject obj)
         {
             objectList.Remove(obj);
         }
