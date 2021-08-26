@@ -75,29 +75,21 @@ namespace MonoGame_Slime.GameCore
         public void OnCollision(CollisionEventArgs eventArgs)
         {
 
-            var wall = eventArgs.coll as Wall;
+
+            var coll = eventArgs.coll;
 
             // Modify Compensation vec
             var compensationVec = eventArgs.compensationVec;
             var compensationMagnitude = eventArgs.compensationMagnitude;
             compensationVec.Normalize();
 
-            // Invert Y speed by some extend
-            var velocityAdd = new Vector2(position.X - wall.position.X, position.Y - wall.position.Y);
-            velocityAdd.Normalize();
-
             // Move the player just out of the compensationvec direction
-
             position += compensationMagnitude * compensationVec;
             velocity += compensationVec * 50f;
 
-            wall.color = Color.Red;
-
-        }
-
-        public void AwayFromWall(Vector2 awayDirection)
-        {
             
+
+
         }
     }
 }

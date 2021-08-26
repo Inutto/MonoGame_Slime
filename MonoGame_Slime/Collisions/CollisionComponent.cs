@@ -13,6 +13,13 @@ namespace MonoGame_Slime.Collisions
         public Vector2 compensationVec;
         public float compensationMagnitude;
 
+
+
+        public CollisionEventArgs()
+        {
+
+        }
+
         public CollisionEventArgs(Vector2 compensationVec)
         {
             this.compensationVec = compensationVec;
@@ -31,19 +38,41 @@ namespace MonoGame_Slime.Collisions
     /// </summary>
     class CollisionComponent
     {
-        public Player player;           // Circle Player
+        List<Player> players = new List<Player>();         // Circle Player
         List<Wall> walls = new List<Wall>();               // Rectangle Walls
 
 
 
         public void Update(GameTime gameTime)
         {
+
+            // Circle - Rect
             foreach(var wall in walls)
             {
-                var eventArgs = isCollisionWithPlayer(wall);
-                if (eventArgs != null)
+
+                foreach(var player in players)
                 {
-                    player.OnCollision(eventArgs);
+                    var eventArgs = isCollisionWithPlayer(player, wall);
+                    if (eventArgs != null)
+                    {
+                        player.OnCollision(eventArgs);
+                    }
+                }
+            }
+
+            // Circle - Circle
+            foreach(var player1 in players)
+            {
+                foreach(var player2 in players)
+                {
+                    if (player1 == player2) continue;
+                    var eventArgs = isCollisionWithCircle(player1, player2);
+                    if(eventArgs != null)
+                    {
+                        // 1 -> 2
+                        player2.OnCollision(eventArgs);
+                    }
+
                 }
             }
         }
@@ -58,11 +87,47 @@ namespace MonoGame_Slime.Collisions
             walls.Remove(wall);
         }
 
-        public void AddPlayer(Player _player)
+        public void AddPlayer(Player player)
         {
-            player = _player;
+            players.Add(player);
         }
 
+
+
+        public CollisionEventArgs isCollision(Vector2 circle1Pos, Vector2 circle2Pos, float r1, float r2)
+        {
+            var distance = SlimeGame.GetDistance(circle1Pos, circle2Pos);
+            if(distance > r1 + r2)
+            {
+                return null;
+            } else
+            {
+                var eventArgs = new CollisionEventArgs();
+                eventArgs.compensationVec = circle2Pos - circle1Pos;
+                eventArgs.compensationVec.Normalize();
+                eventArgs.compensationMagnitude = r1 + r2 - distance;
+                return eventArgs;
+                
+            }
+        }
+
+        public CollisionEventArgs isCollisionWithCircle(Player player1, Player player2)
+        {
+            var eventArgs = isCollision(
+                player1.position, 
+                player2.position,
+                player1.boundBox.radius,
+                player2.boundBox.radius);
+
+            if(eventArgs != null)
+            {
+                eventArgs.coll = player1;
+                return eventArgs;
+            } else
+            {
+                return null;
+            }
+        }
 
 
         /// <summary>
@@ -156,7 +221,7 @@ namespace MonoGame_Slime.Collisions
         /// </summary>
         /// <param name="wall"></param>
         /// <returns></returns>
-        public CollisionEventArgs isCollisionWithPlayer(Wall wall)
+        public CollisionEventArgs isCollisionWithPlayer(Player player, Wall wall)
         {
             var result = isCollision(
                 wall.position, 

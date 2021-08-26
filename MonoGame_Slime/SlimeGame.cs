@@ -29,12 +29,11 @@ namespace MonoGame_Slime
 
         // Gameplay
         private World world;
-        private Player player;
+        
 
         // Wall (should figure out the efficienty way to add this)
         private List<Wall> wallList = new List<Wall>();
-
-
+        private List<Player> playerList = new List<Player>();
 
 
         // Collisions
@@ -79,27 +78,31 @@ namespace MonoGame_Slime
             // Load Recourses
             Arts.Load(Content);
 
-            // Create World Instance
+            
+            // World init parameters
             var worldCenter = new Vector2(screenWidth / 2, screenHeight / 2);
             var worldSize = new Vector2(1024, 768);
-
             var newPlayerPos = worldCenter + new Vector2(0,-200f);
 
+            // Create World Instance
             world = new World(worldCenter, worldSize);
-            player = new Player(newPlayerPos, 100);
+
+
+            // Add players
+            var player1 = new Player(newPlayerPos, 100);
+            var player2 = new Player(newPlayerPos + new Vector2(200,200`), 100);
+
+            playerList.Add(player1);
+            playerList.Add(player2);
 
             // Create Walls and add them to world
-            
-
             float wallWidth = 60f;
             var boundBoxWallSizeHorizontal = new Vector2(worldSize.X, wallWidth);
             var boundBoxWallSizeVertical = new Vector2(wallWidth, worldSize.Y);
 
-
             float wallOffSetX = (worldSize.X - wallWidth) / 2f;
             float wallOffsety = (worldSize.Y - wallWidth) / 2f;
 
-            
             // add wall
             var wall_1 = new Wall(worldCenter + new Vector2(0, wallOffsety), boundBoxWallSizeHorizontal);
             var wall_2 = new Wall(worldCenter + new Vector2(0, -wallOffsety), boundBoxWallSizeHorizontal);
@@ -107,15 +110,16 @@ namespace MonoGame_Slime
             var wall_3 = new Wall(worldCenter + new Vector2(wallOffSetX, 0), boundBoxWallSizeVertical);
             var wall_4 = new Wall(worldCenter + new Vector2(-wallOffSetX, 0), boundBoxWallSizeVertical);
 
-
-            _collisionComponent.AddPlayer(player);
-
             wallList.Add(wall_1);
             wallList.Add(wall_2);
             wallList.Add(wall_3);
             wallList.Add(wall_4);
 
-
+            
+            foreach(var player in playerList)
+            {
+                _collisionComponent.AddPlayer(player);
+            }
 
 
             foreach (var wall in wallList)
@@ -150,7 +154,7 @@ namespace MonoGame_Slime
 
             // Object
             world.Update(gameTime);
-            player.Update(gameTime);
+            foreach (var player in playerList) player.Update(gameTime);
             foreach (var wall in wallList) wall.Update(gameTime);
 
             // Collisions
@@ -172,7 +176,7 @@ namespace MonoGame_Slime
             world.Draw(_spriteBatch);
             
             foreach(var wall in wallList) wall.Draw(_spriteBatch);
-            player.Draw(_spriteBatch);
+            foreach(var player in playerList) player.Draw(_spriteBatch);
 
             // Debug
             _spriteBatch.DrawString(font, debugText_1, new Vector2(100, 100), Color.Black);
