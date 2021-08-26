@@ -35,7 +35,7 @@ namespace MonoGame_Slime.GameCore
         public float gravity = 25f;
         public float maxSpeed = 300f;
 
-        public Player(Vector2 _centerPosition, float _radius, float _rotation = 0f)
+        public Player(Vector2 _centerPosition, float _radius, Color _color, float _rotation = 0f)
         {
             
 
@@ -48,6 +48,8 @@ namespace MonoGame_Slime.GameCore
             // Transform
             position = _centerPosition;
             rotation = _rotation;
+
+            color = _color;
             
         }
 

@@ -89,8 +89,8 @@ namespace MonoGame_Slime
 
 
             // Add players
-            var player1 = new Player(newPlayerPos, 100);
-            var player2 = new Player(newPlayerPos + new Vector2(200,200), 100);
+            var player1 = new Player(newPlayerPos, 100f, Color.White);
+            var player2 = new Player(newPlayerPos + new Vector2(200,200), 100, Color.Red);
 
             playerList.Add(player1);
             playerList.Add(player2);

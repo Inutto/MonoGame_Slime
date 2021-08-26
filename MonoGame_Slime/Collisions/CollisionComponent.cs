@@ -71,6 +71,12 @@ namespace MonoGame_Slime.Collisions
                     {
                         // 1 -> 2
                         player2.OnCollision(eventArgs);
+
+                        var newEventArgs = eventArgs;
+                        newEventArgs.compensationVec *= new Vector2(-1,-1);
+                        newEventArgs.coll = player2;
+
+                        player1.OnCollision(eventArgs);
                     }
 
                 }
@@ -121,7 +127,7 @@ namespace MonoGame_Slime.Collisions
 
             if(eventArgs != null)
             {
-                eventArgs.coll = player1;
+                eventArgs.coll = player2;
                 return eventArgs;
             } else
             {
