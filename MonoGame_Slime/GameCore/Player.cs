@@ -8,11 +8,8 @@ using Microsoft.Xna.Framework;
 
 namespace MonoGame_Slime.GameCore
 {
-    class Player : Object, ICollisionActor
+    class Player : Object
     {
-
-        // Collisions
-        public IShapeF Bounds { get; }
 
         // Gravity
         public float gravity = 0.01f;
@@ -24,7 +21,7 @@ namespace MonoGame_Slime.GameCore
             position = new Microsoft.Xna.Framework.Vector2(
                 SlimeGame.screenWidth / 2 + 100f, 
                 SlimeGame.screenHeight / 2);
-            Bounds = new CircleF(position, image.Width);
+            
         }
 
 
@@ -36,15 +33,13 @@ namespace MonoGame_Slime.GameCore
 
             // Apply new speed 
             velocity += new Vector2(0, newSpeed);
-            Bounds.Position = position;
             base.Update(gameTime);
         }
 
-        public void OnCollision(CollisionEventArgs collisionInfo)
+        public void OnCollision(Wall wall)
         {
-            
             // Invert Y speed by some extend
-            velocity = new Vector2(velocity.X, -velocity.Y * 0.5f);
+            velocity = new Vector2(velocity.X, 0);
         }
     }
 }

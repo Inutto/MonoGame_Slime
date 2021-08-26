@@ -6,22 +6,45 @@ using Microsoft.Xna.Framework;
 
 namespace MonoGame_Slime.Collisions
 {
+
+
+
+
     /// <summary>
     /// Collision System that contains all the objects's info
     /// </summary>
     class CollisionComponent
     {
         public Player player;           // Circle Player
-        List<Wall> walls;               // Rectangle Walls
+        List<Wall> walls = new List<Wall>();               // Rectangle Walls
 
-        public CollisionComponent(Player _player)
+
+
+        public void Update(GameTime gameTime)
         {
-            // Make sure player is not null
-            player = _player; 
+            foreach(var wall in walls)
+            {
+                if (isCollisionWithPlayer(wall))
+                {
+                    player.OnCollision(wall);
+                }
+            }
         }
 
+        public void AddWall(Wall wall)
+        {
+            walls.Add(wall);
+        }
 
+        public void RemoveWall(Wall wall)
+        {
+            walls.Remove(wall);
+        }
 
+        public void AddPlayer(Player _player)
+        {
+            player = _player;
+        }
 
 
 

@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame_Slime.GameCore;
-using MonoGame.Extended.Collisions;
+using MonoGame_Slime.Collisions;
 using MonoGame.Extended;
 
 
@@ -44,7 +44,7 @@ namespace MonoGame_Slime
 
 
             // Collisions
-            _collisionComponent = new CollisionComponent(new RectangleF(0, 0, screenWidth, screenHeight));
+            _collisionComponent = new CollisionComponent();
 
             
             // Content 
@@ -72,9 +72,8 @@ namespace MonoGame_Slime
             player = new Player();
             wall = new Wall();
 
-            // Collisions
-            _collisionComponent.Insert(player);
-            _collisionComponent.Insert(wall);
+            _collisionComponent.AddPlayer(player);
+            _collisionComponent.AddWall(wall);
 
 
         }
@@ -117,8 +116,9 @@ namespace MonoGame_Slime
 
             // All the Object should be drawn here
             world.Draw(_spriteBatch);
-            player.Draw(_spriteBatch);
+            
             wall.Draw(_spriteBatch);
+            player.Draw(_spriteBatch);
 
 
             // End Draw
