@@ -63,7 +63,7 @@ namespace MonoGame_Slime.Collisions
             var cx = player.position.X;
             var cy = player.position.Y;
 
-            SlimeGame.debugText_1 = r.ToString();
+           
 
             var newcx = MathF.Cos(r) * (cx - originX) - MathF.Sin(r) * (cy - originY) + originX;
             var newcy = MathF.Sin(r) * (cx - originX) + MathF.Cos(r) * (cy - originY) + originY;
@@ -74,7 +74,7 @@ namespace MonoGame_Slime.Collisions
             var halfWidth = wall.boundBox.Width / 2;
             var halfHeight = wall.boundBox.Height / 2;
 
-            SlimeGame.debugText_4 = halfWidth.ToString();
+           
 
             float closeX = 0f;
             float closeY = 0f;
@@ -105,14 +105,14 @@ namespace MonoGame_Slime.Collisions
                 closeY = newcy;
             }
 
-            SlimeGame.debugText_2 = new Vector2(closeX, closeY).ToString();
+            
             // Calculate the distance with unrotated circle and compare with the radius of the circle
 
 
             var distance = MathF.Sqrt(MathF.Pow(closeX - newcx, 2) + MathF.Pow(closeY - newcy, 2));
             var radius = player.boundBox.radius;
 
-            SlimeGame.debugText_3 = distance.ToString();
+           
             
 
 

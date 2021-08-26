@@ -22,7 +22,11 @@ namespace MonoGame_Slime.GameCore
         public Vector2 velocity; // for slime
         public float rotation;
 
-        
+        // World Rotation
+        public Vector2 originPosition;
+
+
+
 
         private Vector2 GetCenterPosition()
         {

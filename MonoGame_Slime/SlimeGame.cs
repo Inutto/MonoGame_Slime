@@ -30,8 +30,7 @@ namespace MonoGame_Slime
         private World world;
         private Player player;
         private Wall wall_1;
-        private Wall wall_2;
-        private Wall wall_3;
+
 
 
 
@@ -78,25 +77,25 @@ namespace MonoGame_Slime
             Arts.Load(Content);
 
             // Create World Instance
-            world = new World();
+            var worldCenter = new Vector2(screenWidth / 2, screenHeight / 2);
+            var worldSize = new Vector2(1024, 768);
+
+            world = new World(worldCenter, worldSize);
 
             
 
             player = new Player(new Vector2(400, 400), 100);
 
             var boundBoxWallSize = new Vector2(300, 300);
+            var wallPosOffset = new Vector2(800, 0);
 
-            wall_1 = new Wall(new Vector2(400, 800), boundBoxWallSize);
-            wall_2 = new Wall(new Vector2(200, 500), boundBoxWallSize);
-            wall_3 = new Wall(new Vector2(700, 1200), boundBoxWallSize);
-
-
+            wall_1 = new Wall(worldCenter + wallPosOffset, boundBoxWallSize);
 
             _collisionComponent.AddPlayer(player);
             _collisionComponent.AddWall(wall_1);
-            _collisionComponent.AddWall(wall_2);
 
-            _collisionComponent.AddWall(wall_3);
+            // world rotation
+            world.AddObjectToWorldList(wall_1);
 
 
 
@@ -125,18 +124,12 @@ namespace MonoGame_Slime
             world.Update(gameTime);
             player.Update(gameTime);
             wall_1.Update(gameTime);
-            wall_2.Update(gameTime);
-            wall_3.Update(gameTime);
-
-            wall_1.rotation += 0.01f;
-
-            wall_3.rotation += 0.04f;
-
-
 
             // Collisions
             _collisionComponent.Update(gameTime);
-            
+
+            // Debug
+            debugText_1 = wall_1.position.ToString();
 
             base.Update(gameTime);
         }
@@ -152,17 +145,10 @@ namespace MonoGame_Slime
             world.Draw(_spriteBatch);
             
             wall_1.Draw(_spriteBatch);
-            wall_2.Draw(_spriteBatch);
-            wall_3.Draw(_spriteBatch);
             player.Draw(_spriteBatch);
 
             // Debug
             _spriteBatch.DrawString(font, debugText_1, new Vector2(100, 100), Color.Black);
-            _spriteBatch.DrawString(font, debugText_2, new Vector2(100, 200), Color.Black);
-            _spriteBatch.DrawString(font, debugText_3, new Vector2(100, 300), Color.Black);
-            _spriteBatch.DrawString(font, debugText_4, new Vector2(100, 400), Color.Black);
-
-
 
 
             // End Draw

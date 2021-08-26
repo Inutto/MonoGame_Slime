@@ -17,6 +17,7 @@ namespace MonoGame_Slime.GameCore
 
         public Circle(Vector2 _position, float _radius)
         {
+            
             position = _position;
             radius = _radius;
         }
@@ -35,6 +36,8 @@ namespace MonoGame_Slime.GameCore
 
         public Player(Vector2 _centerPosition, float _radius, float _rotation = 0f)
         {
+            
+
             // Graphics
             image = Arts.Player;
 

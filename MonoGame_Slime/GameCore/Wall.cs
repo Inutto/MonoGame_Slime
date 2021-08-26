@@ -34,6 +34,7 @@ namespace MonoGame_Slime.GameCore
             // Transform
             position = _centerPosition;
             rotation = _rotation;
+            originPosition = _centerPosition;
         }
 
         public override void Update(GameTime gameTime)

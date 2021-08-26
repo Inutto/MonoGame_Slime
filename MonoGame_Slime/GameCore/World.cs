@@ -21,7 +21,6 @@ namespace MonoGame_Slime.GameCore
         public Color color = Color.White;
 
         // Transform
-        public Vector2 position;
         public static Vector2 worldCenter;         // the rotation center, also the center of the world
         public static float worldRotation;         // the global orientation of the world
 
@@ -29,13 +28,16 @@ namespace MonoGame_Slime.GameCore
         public List<Object> objectList; // store all the objects
 
 
-        public World()
+        public World(Vector2 _center, Vector2 _size)
         {
+            // Graphics
             image = Arts.World;
-            position = new Vector2(SlimeGame.screenWidth / 2 + 200f, SlimeGame.screenHeight / 2);
-            worldCenter = new Vector2(SlimeGame.screenWidth / 2, SlimeGame.screenHeight / 2);
+
+            // Transform
+            worldCenter = _center;
             worldRotation = 0f;
 
+            // Objects
             objectList = new List<Object>();
         }
 
@@ -45,8 +47,34 @@ namespace MonoGame_Slime.GameCore
             MouseState mouseState = Mouse.GetState();
             worldRotation = mouseState.X / 300f;
 
-            
-        
+            // Move everyobject by changing their rotation and position
+            foreach(var obj in objectList)
+            {
+                var objPos = obj.originPosition;
+                var directionVec = objPos - worldCenter;
+                var r = worldRotation;
+
+                var cos = MathF.Cos(r);
+                var sin = MathF.Sin(r);
+
+                var x = directionVec.X;
+                var y = directionVec.Y;
+
+
+                var newX = cos * x - sin * y;
+                var newY = sin * x + cos + y;
+
+                var newVec = new Vector2(newX, newY);
+                var newPos = newVec + worldCenter;
+
+                // Assign Position
+                obj.position = newPos;
+                obj.rotation = worldRotation;
+
+            }
+
+
+
         }
 
         public void AddObjectToWorldList(Object obj)
@@ -62,7 +90,7 @@ namespace MonoGame_Slime.GameCore
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             var imageCenter = new Vector2(image.Width / 2, image.Height / 2);
-            spriteBatch.Draw(image, position, null, color, worldRotation, imageCenter, Vector2.One, SpriteEffects.None, 0f);
+            spriteBatch.Draw(image, worldCenter, null, color, worldRotation, imageCenter, Vector2.One, SpriteEffects.None, 0f);
         }
 
     }
