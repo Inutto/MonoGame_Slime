@@ -46,9 +46,6 @@ namespace MonoGame_Slime.GameCore
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            SlimeGame.debugText_1 = scale.ToString();
-            SlimeGame.debugText_2 = image.Width.ToString();
-
 
         }
 

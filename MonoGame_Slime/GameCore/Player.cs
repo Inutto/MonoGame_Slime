@@ -32,8 +32,8 @@ namespace MonoGame_Slime.GameCore
         public Circle boundBox;
 
         // Gravity
-        public float gravity = 0.0001f;
-        public float maxSpeed = 10f;
+        public float gravity = 25f;
+        public float maxSpeed = 300f;
 
         public Player(Vector2 _centerPosition, float _radius, float _rotation = 0f)
         {
@@ -55,23 +55,19 @@ namespace MonoGame_Slime.GameCore
         public override void Update(GameTime gameTime)
         {
             // Update Speed Value by gravity
-            
-            var currentSpeed = velocity.Y;
-            var newSpeed = MathF.Min(currentSpeed + gravity, maxSpeed);
+            var newSpeed = velocity.Y + gravity;
+            if(newSpeed > maxSpeed)
+            {
+                newSpeed = maxSpeed;
+            } else if(newSpeed < -maxSpeed)
+            {
+                newSpeed = -maxSpeed;
+            } 
 
             // Apply new speed 
-            velocity += new Vector2(0, newSpeed);
-            
-            
-            // Debug
-            /*
-            MouseState mouseState = Mouse.GetState();
-            position.X = mouseState.X;
-            position.Y = mouseState.Y;
-            */
-            
-            
+            velocity = new Vector2(velocity.X, newSpeed);
 
+            SlimeGame.debugText_1 = velocity.ToString();
 
             base.Update(gameTime);
         }
@@ -93,7 +89,7 @@ namespace MonoGame_Slime.GameCore
             // Move the player just out of the compensationvec direction
 
             position += compensationMagnitude * compensationVec;
-            velocity +=  compensationVec;
+            velocity += compensationVec * 50f;
 
             wall.color = Color.Red;
 
