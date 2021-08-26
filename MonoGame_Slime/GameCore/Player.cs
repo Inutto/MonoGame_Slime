@@ -55,8 +55,8 @@ namespace MonoGame_Slime.GameCore
             // Invert Y speed by some extend
             var velocityAdd = new Vector2(position.X - wall.position.X, position.Y - wall.position.Y);
             velocityAdd.Normalize();
-            position += velocityAdd * 2f;
-            velocity = new Vector2(velocity.X * 4f + velocityAdd.X, 0);
+            position += velocityAdd;
+            velocity = new Vector2(velocity.X + velocityAdd.X * 2f, 0);
             wall.color = Color.Red;
             Console.WriteLine("Coli");
         }
