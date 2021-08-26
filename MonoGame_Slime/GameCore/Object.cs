@@ -15,8 +15,8 @@ namespace MonoGame_Slime.GameCore
     {
 
         // Graphics
-        protected Texture2D image;
-        protected Color color = Color.White;
+        public Texture2D image;
+        public Color color = Color.White;
 
         // Transform
         public Vector2 position; // absolute position, the center of image usually

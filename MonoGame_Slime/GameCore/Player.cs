@@ -24,7 +24,7 @@ namespace MonoGame_Slime.GameCore
             position = new Microsoft.Xna.Framework.Vector2(
                 SlimeGame.screenWidth / 2 + 100f, 
                 SlimeGame.screenHeight / 2);
-            Bounds = new CircleF(position, image.Width / 2);
+            Bounds = new CircleF(position, image.Width);
         }
 
 
@@ -44,7 +44,7 @@ namespace MonoGame_Slime.GameCore
         {
             
             // Invert Y speed by some extend
-            velocity = new Vector2(velocity.X, -velocity.Y);
+            velocity = new Vector2(velocity.X, -velocity.Y * 0.5f);
         }
     }
 }

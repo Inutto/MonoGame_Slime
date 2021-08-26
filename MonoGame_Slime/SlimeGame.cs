@@ -99,6 +99,8 @@ namespace MonoGame_Slime
             player.Update(gameTime);
             wall.Update(gameTime);
 
+            wall.rotation += 0.01f;
+
             // Collisions
             _collisionComponent.Update(gameTime);
             

@@ -17,6 +17,7 @@ namespace MonoGame_Slime.GameCore
         public Wall()
         {
             image = Arts.Wall;
+            rotation = 0.9f;
             position = new Vector2(
                 SlimeGame.screenWidth / 2 + 100f,
                 SlimeGame.screenHeight / 2 + 450f);
