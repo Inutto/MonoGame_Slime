@@ -49,6 +49,10 @@ namespace MonoGame_Slime.GameCore
             position = _centerPosition;
             rotation = _rotation;
 
+            // Apply Scale
+            var scaleR = (float)boundBox.radius / (float)(image.Width / 2);
+            scale = new Vector2(scaleR, scaleR);
+
             color = _color;
             
         }
@@ -78,7 +82,7 @@ namespace MonoGame_Slime.GameCore
 
             if (coll is Wall)
             {
-                compensationMagnitude *= multiplyer;
+                compensationMagnitude *= 1f;
             }
             else
             {
@@ -86,8 +90,12 @@ namespace MonoGame_Slime.GameCore
             }
 
             // Move the player just out of the compensationvec direction
-            position += compensationMagnitude * compensationVec;
-            velocity += compensationVec * 50f;
+
+            var deltaDistance = compensationMagnitude * compensationVec;
+            SlimeGame.debugText_1 = compensationMagnitude.ToString();
+            position += deltaDistance;
+            
+            
 
             
 

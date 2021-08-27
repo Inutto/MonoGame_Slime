@@ -45,7 +45,7 @@ namespace MonoGame_Slime.GameCore
         {
             // Use Mouse to control Rotation
             MouseState mouseState = Mouse.GetState();
-            worldRotation = mouseState.X / 300f;
+            worldRotation = mouseState.X / 500f;
 
             // Move everyobject by changing their rotation and position
             foreach(var obj in objectList)

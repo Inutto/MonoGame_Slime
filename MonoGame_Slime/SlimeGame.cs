@@ -110,16 +110,28 @@ namespace MonoGame_Slime
         {
             // Player Parameters
             var newPlayerPos = worldCenter + new Vector2(0, -200f);
-            var playerRadius = 100f;
+            var playerRadius = 40f;
 
             // Add players
             var player1 = new Player(newPlayerPos, playerRadius, Color.White);
+
             var player2 = new Player(newPlayerPos + new Vector2(200, 200), playerRadius, Color.Red);
-            // var player3 = new Player(newPlayerPos + new Vector2(-200, -200), playerRadius, Color.Red);
+            var player3 = new Player(newPlayerPos + new Vector2(-200, -200), playerRadius, Color.Red);
+
+            var player4 = new Player(newPlayerPos + new Vector2(-100, 100), playerRadius, Color.Red);
+            var player5 = new Player(newPlayerPos + new Vector2(-100, -100), playerRadius, Color.Red);
+            var player6 = new Player(newPlayerPos + new Vector2(100, 100), playerRadius, Color.Red);
+
+
+
+
 
             playerList.Add(player1);
             playerList.Add(player2);
-            // playerList.Add(player3);
+            playerList.Add(player3);
+            playerList.Add(player4);
+            playerList.Add(player5);
+            playerList.Add(player6);
 
             // Physics
             foreach (var player in playerList)
@@ -128,7 +140,12 @@ namespace MonoGame_Slime
                 _gravityComponent.AddGameObject(player);
             }
 
-            _constraintComponent.AddConstraintPair(player1, player2, 250f);
+            _constraintComponent.AddConstraintPair(player1, player2, 150f);
+            _constraintComponent.AddConstraintPair(player1, player3, 170f);
+
+            _constraintComponent.AddConstraintPair(player2, player4, 150f);
+            _constraintComponent.AddConstraintPair(player2, player5, 170f);
+            _constraintComponent.AddConstraintPair(player1, player6, 150f);
         }
 
         private void AddWalls()
@@ -179,6 +196,7 @@ namespace MonoGame_Slime
             // Physics (The following order matters!)
             
             _gravityComponent.Update(gameTime);
+            _collisionComponent.Update(gameTime);
             _constraintComponent.Update(gameTime);
             _collisionComponent.Update(gameTime);
 

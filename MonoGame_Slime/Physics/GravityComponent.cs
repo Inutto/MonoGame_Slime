@@ -11,8 +11,8 @@ namespace MonoGame_Slime.Physics
         public List<GameObject> gravityObjectList = new List<GameObject>();
 
         // Gravity Settings
-        public float gravity = 25f;
-        public float maxSpeed = 300f;
+        public float gravity = 50f;
+        public float maxSpeed = 400f;
 
 
 
