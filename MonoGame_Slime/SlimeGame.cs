@@ -34,6 +34,8 @@ namespace MonoGame_Slime
         private Vector2 worldCenter = new Vector2(screenWidth / 2, screenHeight / 2);
         private Vector2 worldSize = new Vector2(worldWidth, worldHeight);
 
+        private Wall wall_rotate;
+
         // GameObjects
         private List<Wall> wallList = new List<Wall>();
         private List<Player> playerList = new List<Player>();
@@ -179,7 +181,7 @@ namespace MonoGame_Slime
             float wallOffSetX = (worldSize.X + wallWidth) / 2f;
             float wallOffsety = (worldSize.Y + wallWidth) / 2f;
 
-            // add wall
+            // add border walls
             var wall_1 = new Wall(worldCenter + new Vector2(0, wallOffsety), boundBoxWallSizeHorizontal);
             var wall_2 = new Wall(worldCenter + new Vector2(0, -wallOffsety), boundBoxWallSizeHorizontal);
 
@@ -191,12 +193,34 @@ namespace MonoGame_Slime
             wallList.Add(wall_3);
             wallList.Add(wall_4);
 
+
+            // add obstagles walls
+            var wall_obs_Offset = new Vector2(256, 250);
+            var wall_obs_size = new Vector2(100, 268);
+
+
+            var wall_obs_1 = new Wall(worldCenter + wall_obs_Offset, wall_obs_size);
+            var wall_obs_2 = new Wall(worldCenter - wall_obs_Offset, wall_obs_size);
+
+            wallList.Add(wall_obs_1);
+            wallList.Add(wall_obs_2);
+
+
+            // add rotating wall (not add to wallList)
+
+            var wall_rotate_size = new Vector2(200, 200);
+            wall_rotate = new Wall(worldCenter, wall_rotate_size);
+
+
+
             // Physics
             foreach (var wall in wallList)
             {
                 _collisionComponent.AddWall(wall);
                 world.AddObjectToWorldRotationList(wall);
             }
+
+            _collisionComponent.AddWall(wall_rotate);
         }
 
 
@@ -221,6 +245,9 @@ namespace MonoGame_Slime
             _collisionComponent.Update(gameTime);
 
 
+            wall_rotate.rotation -= 0.05f;
+
+
             base.Update(gameTime);
         }
 
@@ -236,6 +263,9 @@ namespace MonoGame_Slime
             
             foreach(var wall in wallList) wall.Draw(_spriteBatch);
             foreach(var player in playerList) player.Draw(_spriteBatch);
+
+            // wall_rotate
+            wall_rotate.Draw(_spriteBatch);
 
             // Debug
             _spriteBatch.DrawString(font, debugText_1, new Vector2(100, 100), Color.White);

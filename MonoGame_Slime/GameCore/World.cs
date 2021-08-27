@@ -30,6 +30,11 @@ namespace MonoGame_Slime.GameCore
 
         public World(Vector2 _center, Vector2 _size)
         {
+
+
+            
+
+
             // Graphics
             image = Arts.World;
 
@@ -45,7 +50,7 @@ namespace MonoGame_Slime.GameCore
         {
             // Use Mouse to control Rotation
             MouseState mouseState = Mouse.GetState();
-            worldRotation = mouseState.X / 500f;
+            worldRotation = mouseState.X / 200f;
 
             // Move everyobject by changing their rotation and position
             foreach(var obj in objectList)

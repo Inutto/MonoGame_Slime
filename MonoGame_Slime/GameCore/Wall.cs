@@ -39,6 +39,7 @@ namespace MonoGame_Slime.GameCore
             position = _centerPosition;
             rotation = _rotation;
             originPosition = _centerPosition;
+            color = Color.White;
 
             
         }
