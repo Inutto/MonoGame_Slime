@@ -22,5 +22,13 @@ namespace MonoGame_Slime.GameCore
             Wall = content.Load<Texture2D>("Wall");
         }
 
+
+
+        public List<Texture2D> PlayerArts = new List<Texture2D>();
+        public static void LoadPlayerArt(ContentManager content)
+        {
+
+        }
+
     }
 }
