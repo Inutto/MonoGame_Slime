@@ -214,6 +214,15 @@ namespace MonoGame_Slime.Physics
             if (distance > radius)
             {
                 return null;
+            } else if (distance <= 0)
+            {
+                var savingVec = circlePos - rectanglePos;
+                savingVec.Normalize();
+                var savingMagnitude = radius;
+
+                var eventArgs = new CollisionEventArgs(savingVec);
+                eventArgs.compensationMagnitude = savingMagnitude;
+                return eventArgs;
             }
             else
             {

@@ -20,6 +20,11 @@ namespace MonoGame_Slime
         private SpriteBatch _spriteBatch;
         public static int screenWidth = 1920;
         public static int screenHeight = 1080;
+
+        public static float worldSizeMultiplier = 0.9f;
+        public static int worldWidth = (int)(1024 * worldSizeMultiplier);
+        public static int worldHeight = (int)(768 * worldSizeMultiplier);
+        
     
         // Input
         private KeyboardState _keyboardState; // Global Key State
@@ -27,7 +32,7 @@ namespace MonoGame_Slime
         // World 
         private World world;
         private Vector2 worldCenter = new Vector2(screenWidth / 2, screenHeight / 2);
-        private Vector2 worldSize = new Vector2(1024, 768);
+        private Vector2 worldSize = new Vector2(worldWidth, worldHeight);
 
         // GameObjects
         private List<Wall> wallList = new List<Wall>();
@@ -110,21 +115,18 @@ namespace MonoGame_Slime
         {
             // Player Parameters
             var newPlayerPos = worldCenter + new Vector2(0, -200f);
-            var playerRadius = 40f;
+            var playerRadius = 20f;
 
             // Add players
             var player1 = new Player(newPlayerPos, playerRadius, Color.White);
 
-            var player2 = new Player(newPlayerPos + new Vector2(200, 200), playerRadius, Color.Red);
-            var player3 = new Player(newPlayerPos + new Vector2(-200, -200), playerRadius, Color.Red);
+            var player2 = new Player(newPlayerPos + new Vector2(0, -100), playerRadius, Color.Red);
+            var player3 = new Player(newPlayerPos + new Vector2(87, -50), playerRadius, Color.Red);
 
-            var player4 = new Player(newPlayerPos + new Vector2(-100, 100), playerRadius, Color.Red);
-            var player5 = new Player(newPlayerPos + new Vector2(-100, -100), playerRadius, Color.Red);
-            var player6 = new Player(newPlayerPos + new Vector2(100, 100), playerRadius, Color.Red);
-
-
-
-
+            var player4 = new Player(newPlayerPos + new Vector2(87, 50), playerRadius, Color.Red);
+            var player5 = new Player(newPlayerPos + new Vector2(0, 100), playerRadius, Color.Red);
+            var player6 = new Player(newPlayerPos + new Vector2(-87, 50), playerRadius, Color.Red);
+            var player7 = new Player(newPlayerPos + new Vector2(-87, -50), playerRadius, Color.Red);
 
             playerList.Add(player1);
             playerList.Add(player2);
@@ -132,6 +134,7 @@ namespace MonoGame_Slime
             playerList.Add(player4);
             playerList.Add(player5);
             playerList.Add(player6);
+            playerList.Add(player7);
 
             // Physics
             foreach (var player in playerList)
@@ -140,23 +143,41 @@ namespace MonoGame_Slime
                 _gravityComponent.AddGameObject(player);
             }
 
-            _constraintComponent.AddConstraintPair(player1, player2, 150f);
-            _constraintComponent.AddConstraintPair(player1, player3, 170f);
 
-            _constraintComponent.AddConstraintPair(player2, player4, 150f);
-            _constraintComponent.AddConstraintPair(player2, player5, 170f);
-            _constraintComponent.AddConstraintPair(player1, player6, 150f);
+            var commonMaxDistance = 100f;
+            var commonMinDistance = 70f;
+
+            _constraintComponent.AddConstraintPair(player1, player2, commonMaxDistance, commonMinDistance);
+            _constraintComponent.AddConstraintPair(player1, player3, commonMaxDistance, commonMinDistance);
+            _constraintComponent.AddConstraintPair(player1, player4, commonMaxDistance, commonMinDistance);
+            _constraintComponent.AddConstraintPair(player1, player5, commonMaxDistance, commonMinDistance);
+            _constraintComponent.AddConstraintPair(player1, player6, commonMaxDistance, commonMinDistance);
+            _constraintComponent.AddConstraintPair(player1, player7, commonMaxDistance, commonMinDistance);
+
+            _constraintComponent.AddConstraintPair(player2, player3, commonMaxDistance, commonMinDistance);
+            _constraintComponent.AddConstraintPair(player3, player4, commonMaxDistance, commonMinDistance);
+            _constraintComponent.AddConstraintPair(player4, player5, commonMaxDistance, commonMinDistance);
+            _constraintComponent.AddConstraintPair(player5, player6, commonMaxDistance, commonMinDistance);
+            _constraintComponent.AddConstraintPair(player6, player7, commonMaxDistance, commonMinDistance);
+            _constraintComponent.AddConstraintPair(player7, player2, commonMaxDistance, commonMinDistance);
+ 
+        }
+
+
+        private void AddPlayerToSystem()
+        {
+
         }
 
         private void AddWalls()
         {
             // Wall parameters
-            float wallWidth = 60f;
-            var boundBoxWallSizeHorizontal = new Vector2(worldSize.X, wallWidth);
-            var boundBoxWallSizeVertical = new Vector2(wallWidth, worldSize.Y);
+            float wallWidth = 800f;
+            var boundBoxWallSizeHorizontal = new Vector2(worldSize.X + 2 * wallWidth, wallWidth);
+            var boundBoxWallSizeVertical = new Vector2(wallWidth, worldSize.Y + 2 * wallWidth);
 
-            float wallOffSetX = (worldSize.X - wallWidth) / 2f;
-            float wallOffsety = (worldSize.Y - wallWidth) / 2f;
+            float wallOffSetX = (worldSize.X + wallWidth) / 2f;
+            float wallOffsety = (worldSize.Y + wallWidth) / 2f;
 
             // add wall
             var wall_1 = new Wall(worldCenter + new Vector2(0, wallOffsety), boundBoxWallSizeHorizontal);
@@ -217,10 +238,10 @@ namespace MonoGame_Slime
             foreach(var player in playerList) player.Draw(_spriteBatch);
 
             // Debug
-            _spriteBatch.DrawString(font, debugText_1, new Vector2(100, 100), Color.Black);
-            _spriteBatch.DrawString(font, debugText_2, new Vector2(100, 200), Color.Black);
-            _spriteBatch.DrawString(font, debugText_3, new Vector2(100, 300), Color.Black);
-            _spriteBatch.DrawString(font, debugText_4, new Vector2(100, 400), Color.Black);
+            _spriteBatch.DrawString(font, debugText_1, new Vector2(100, 100), Color.White);
+            _spriteBatch.DrawString(font, debugText_2, new Vector2(100, 200), Color.White);
+            _spriteBatch.DrawString(font, debugText_3, new Vector2(100, 300), Color.White);
+            _spriteBatch.DrawString(font, debugText_4, new Vector2(100, 400), Color.White);
 
             _constraintComponent.Draw(_spriteBatch);
 

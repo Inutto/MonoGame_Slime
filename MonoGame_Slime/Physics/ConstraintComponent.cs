@@ -15,7 +15,8 @@ namespace MonoGame_Slime.Physics
     {
         public Player player1;
         public Player player2;
-        public float constraintDistance;
+        public float maxConstraintDistance;
+        public float minConstraintDistance;
     }
         
 
@@ -37,6 +38,7 @@ namespace MonoGame_Slime.Physics
         public Texture2D drawingTexture;
         public Color drawingColor = Color.Bisque;
         public Color drawingMaxDistanceColor = Color.DarkOrange;
+        public Color drawingMinDistanceColor = Color.BlueViolet;
 
 
 
@@ -76,9 +78,12 @@ namespace MonoGame_Slime.Physics
 
                 var color = new Color();
 
-                if(distance < playerPairArgs.constraintDistance)
+                if(distance < playerPairArgs.maxConstraintDistance)
                 {
                     color = drawingColor;
+                } else if(distance > playerPairArgs.minConstraintDistance)
+                {
+                    color = drawingMinDistanceColor;
                 } else
                 {
                     color = drawingMaxDistanceColor;
@@ -99,16 +104,25 @@ namespace MonoGame_Slime.Physics
 
             var player1 = constraintPairArgs.player1;
             var player2 = constraintPairArgs.player2;
-            var constraintDistance = constraintPairArgs.constraintDistance;
+            var max = constraintPairArgs.maxConstraintDistance;
+            var min = constraintPairArgs.minConstraintDistance;
 
             // The actual distance
             var distance = SlimeGame.GetDistance(player1.position, player2.position);
 
-            if(distance > constraintDistance)
+            if(distance > max)
             {
                 // Push player2 towards player1
                 var pushVec = (player1.position - player2.position);
-                var pushDistance = distance - constraintDistance;
+                var pushDistance = distance - max;
+                pushVec.Normalize();
+
+                player2.position += pushVec * pushDistance;
+            } else if(distance < min)
+            {
+                // Push player2 away from player1
+                var pushVec = (player2.position - player1.position);
+                var pushDistance = min - distance;
                 pushVec.Normalize();
 
                 player2.position += pushVec * pushDistance;
@@ -117,12 +131,13 @@ namespace MonoGame_Slime.Physics
 
         }
 
-        public void AddConstraintPair(Player player1, Player player2, float constraintDistance)
+        public void AddConstraintPair(Player player1, Player player2, float max, float min)
         {
             var newArgs = new ConstraintPairArgs();
             newArgs.player1 = player1;
             newArgs.player2 = player2;
-            newArgs.constraintDistance = constraintDistance;
+            newArgs.maxConstraintDistance = max;
+            newArgs.minConstraintDistance = min;
 
             constraintPairList.Add(newArgs);
         }
