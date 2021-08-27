@@ -165,12 +165,6 @@ namespace MonoGame_Slime
  
         }
 
-
-        private void AddPlayerToSystem()
-        {
-
-        }
-
         private void AddWalls()
         {
             // Wall parameters
@@ -225,7 +219,6 @@ namespace MonoGame_Slime
 
 
 
-        
 
         protected override void Update(GameTime gameTime)
         {
@@ -244,7 +237,7 @@ namespace MonoGame_Slime
             _constraintComponent.Update(gameTime);
             _collisionComponent.Update(gameTime);
 
-
+            
             wall_rotate.rotation -= 0.05f;
 
 

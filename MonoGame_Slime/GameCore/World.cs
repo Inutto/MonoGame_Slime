@@ -13,7 +13,7 @@ namespace MonoGame_Slime.GameCore
     /// <summary>
     /// The container of all game objects. Can only created by once. (Singleton)
     /// </summary>
-    class World
+    public class World
     {
 
         // Graphics
@@ -22,7 +22,7 @@ namespace MonoGame_Slime.GameCore
 
         // Transform
         public static Vector2 worldCenter;         // the rotation center, also the center of the world
-        public static float worldRotation;         // the global orientation of the world
+        public float worldRotation;         // the global orientation of the world
 
         // Child
         public List<GameObject> objectList; // store all the objects
@@ -46,14 +46,46 @@ namespace MonoGame_Slime.GameCore
             objectList = new List<GameObject>();
         }
 
+        private void KeyboardControlUpdate(GameTime gameTime)
+        {
+            var _keyboardState = Keyboard.GetState();
+            var rotationSpeed = 1.7f; // the best para I can get
+            var rotationSpeedMultiplier = 2f;
+
+            var originSpeed = rotationSpeed;
+
+            if (_keyboardState.IsKeyDown(Keys.LeftShift))
+            {
+                originSpeed *= rotationSpeedMultiplier;
+            }
+
+            if (_keyboardState.IsKeyDown(Keys.Left))
+            {
+                
+                worldRotation -= originSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
+
+            if (_keyboardState.IsKeyDown(Keys.Right))
+            {
+                worldRotation += originSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
+
+
+        }
+
         public void Update(GameTime gameTime)
         {
-            // Use Mouse to control Rotation
-            MouseState mouseState = Mouse.GetState();
-            worldRotation = mouseState.X / 200f;
+            //// Use Mouse to control Rotation
+            //MouseState mouseState = Mouse.GetState();
+            //worldRotation = mouseState.X / 200f;
+
+            // Keyboard Control
+            KeyboardControlUpdate(gameTime);
+
+
 
             // Move everyobject by changing their rotation and position
-            foreach(var obj in objectList)
+            foreach (var obj in objectList)
             {
                 var objPos = obj.originPosition;
                 var directionVec = objPos - worldCenter;
@@ -67,6 +99,9 @@ namespace MonoGame_Slime.GameCore
                 obj.rotation = worldRotation;
 
             }
+
+
+
         }
 
         public void AddObjectToWorldRotationList(GameObject obj)
