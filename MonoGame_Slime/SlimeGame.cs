@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame_Slime.GameCore;
-using MonoGame_Slime.Collisions;
+using MonoGame_Slime.Physics;
 using System.Collections.Generic;
 using System;
 
@@ -15,30 +15,29 @@ namespace MonoGame_Slime
         // Singleton
         public static SlimeGame Instance { get; private set; }
 
-
         // Graphics
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         public static int screenWidth = 1920;
         public static int screenHeight = 1080;
     
-
         // Input
         private KeyboardState _keyboardState; // Global Key State
 
-
-        // Gameplay
+        // World 
         private World world;
-        
+        private Vector2 worldCenter = new Vector2(screenWidth / 2, screenHeight / 2);
+        private Vector2 worldSize = new Vector2(1024, 768);
 
-        // Wall (should figure out the efficienty way to add this)
+        // GameObjects
         private List<Wall> wallList = new List<Wall>();
         private List<Player> playerList = new List<Player>();
 
-
-        // Collisions
+        // Physics (Collision -> Gravity -> Constraint)
         private CollisionComponent _collisionComponent;
-
+        private GravityComponent _gravityComponent;
+        private ConstraintComponent _constraintComponent;
+        
         // Debug
         private SpriteFont font;
         public static string debugText_1 = "";
@@ -54,8 +53,10 @@ namespace MonoGame_Slime
             _graphics = new GraphicsDeviceManager(this);
 
 
-            // Collisions
+            // Physics
             _collisionComponent = new CollisionComponent();
+            _gravityComponent = new GravityComponent();
+            _constraintComponent = new ConstraintComponent();
 
             
             // Content 
@@ -78,24 +79,55 @@ namespace MonoGame_Slime
             // Load Recourses
             Arts.Load(Content);
 
-            
-            // World init parameters
-            var worldCenter = new Vector2(screenWidth / 2, screenHeight / 2);
-            var worldSize = new Vector2(1024, 768);
-            var newPlayerPos = worldCenter + new Vector2(0,-200f);
+            // World
+            AddWorld();
 
+            // GameObject
+            AddPlayers();
+            AddWalls();
+
+            // Font
+            font = Content.Load<SpriteFont>("Debug");
+
+
+        }
+
+
+
+        private void AddWorld()
+        {
+
+           
             // Create World Instance
             world = new World(worldCenter, worldSize);
+        }
 
+        private void AddPlayers()
+        {
+            // Player Parameters
+            var newPlayerPos = worldCenter + new Vector2(0, -200f);
+            var playerRadius = 100f;
 
             // Add players
-            var player1 = new Player(newPlayerPos, 100f, Color.White);
-            var player2 = new Player(newPlayerPos + new Vector2(200,200), 100, Color.Red);
+            var player1 = new Player(newPlayerPos, playerRadius, Color.White);
+            var player2 = new Player(newPlayerPos + new Vector2(200, 200), playerRadius, Color.Red);
+            var player3 = new Player(newPlayerPos + new Vector2(-200, -200), playerRadius, Color.Red);
 
             playerList.Add(player1);
             playerList.Add(player2);
+            playerList.Add(player3);
 
-            // Create Walls and add them to world
+            // Physics
+            foreach (var player in playerList)
+            {
+                _collisionComponent.AddPlayer(player);
+                _gravityComponent.AddGameObject(player);
+            }
+        }
+
+        private void AddWalls()
+        {
+            // Wall parameters
             float wallWidth = 60f;
             var boundBoxWallSizeHorizontal = new Vector2(worldSize.X, wallWidth);
             var boundBoxWallSizeVertical = new Vector2(wallWidth, worldSize.Y);
@@ -115,36 +147,17 @@ namespace MonoGame_Slime
             wallList.Add(wall_3);
             wallList.Add(wall_4);
 
-            
-            foreach(var player in playerList)
-            {
-                _collisionComponent.AddPlayer(player);
-            }
-
-
+            // Physics
             foreach (var wall in wallList)
             {
                 _collisionComponent.AddWall(wall);
-                world.AddObjectToWorldList(wall);
+                world.AddObjectToWorldRotationList(wall);
             }
-
-            // world.AddObjectToWorldList(player);
-
-           
-            // Font
-            font = Content.Load<SpriteFont>("Debug");
-
-
         }
 
 
 
-        protected override void LoadContent()
-        {
-            
-            // Try not to write somehting here
-
-        }
+        
 
         protected override void Update(GameTime gameTime)
         {
@@ -157,10 +170,11 @@ namespace MonoGame_Slime
             foreach (var player in playerList) player.Update(gameTime);
             foreach (var wall in wallList) wall.Update(gameTime);
 
-            // Collisions
+            // Physics
             _collisionComponent.Update(gameTime);
+            _gravityComponent.Update(gameTime);
+            _constraintComponent.Update(gameTime);
 
-            
 
             base.Update(gameTime);
         }

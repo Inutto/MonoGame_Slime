@@ -64,7 +64,7 @@ namespace MonoGame_Slime.GameCore
             }
         }
 
-        public void AddObjectToWorldList(GameObject obj)
+        public void AddObjectToWorldRotationList(GameObject obj)
         {
             objectList.Add(obj);
         }

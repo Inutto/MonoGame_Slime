@@ -4,7 +4,7 @@ using System.Text;
 using MonoGame_Slime.GameCore;
 using Microsoft.Xna.Framework;
 
-namespace MonoGame_Slime.Collisions
+namespace MonoGame_Slime.Physics
 {
 
 
