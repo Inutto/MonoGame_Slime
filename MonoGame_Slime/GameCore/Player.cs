@@ -37,10 +37,10 @@ namespace MonoGame_Slime.GameCore
 
         public Player(Vector2 _centerPosition, float _radius, Color _color, float _rotation = 0f)
         {
-            
+
 
             // Graphics
-            image = Arts.Player;
+            image = Arts.LoadPlayerArt();
 
             // Boundbox (Circle)
             boundBox = new Circle(_centerPosition, _radius);
@@ -51,7 +51,7 @@ namespace MonoGame_Slime.GameCore
 
             // Apply Scale
             //var scaleR = (float)boundBox.radius / (float)(image.Width / 2);
-            var scaleMultiplier = 1.8f;
+            var scaleMultiplier = 2f;
             scale = new Vector2(scaleMultiplier, scaleMultiplier);
 
             color = _color;

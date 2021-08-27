@@ -19,10 +19,6 @@ namespace MonoGame_Slime.Physics
         public float minConstraintDistance;
     }
         
-
-
-
-
     /// <summary>
     /// Define the Comstraint Between 2 players. player only.
     /// </summary>
@@ -118,6 +114,8 @@ namespace MonoGame_Slime.Physics
                 pushVec.Normalize();
 
                 player2.position += pushVec * pushDistance;
+                player2.velocity = new Vector2(0.1f, player2.velocity.Y);
+
             } else if(distance < min)
             {
                 // Push player2 away from player1
