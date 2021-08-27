@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System;
 
 
+
 namespace MonoGame_Slime
 {
     public class SlimeGame : Game
@@ -120,15 +121,19 @@ namespace MonoGame_Slime
             var playerRadius = 20f;
 
             // Add players
-            var player1 = new Player(newPlayerPos, playerRadius, Color.White);
 
-            var player2 = new Player(newPlayerPos + new Vector2(0, -100), playerRadius, Color.Red);
-            var player3 = new Player(newPlayerPos + new Vector2(87, -50), playerRadius, Color.Red);
 
-            var player4 = new Player(newPlayerPos + new Vector2(87, 50), playerRadius, Color.Red);
-            var player5 = new Player(newPlayerPos + new Vector2(0, 100), playerRadius, Color.Red);
-            var player6 = new Player(newPlayerPos + new Vector2(-87, 50), playerRadius, Color.Red);
-            var player7 = new Player(newPlayerPos + new Vector2(-87, -50), playerRadius, Color.Red);
+            var normalColor = Color.White;
+
+            var player1 = new Player(newPlayerPos, playerRadius, normalColor);
+
+            var player2 = new Player(newPlayerPos + new Vector2(0, -100), playerRadius, normalColor);
+            var player3 = new Player(newPlayerPos + new Vector2(87, -50), playerRadius, normalColor);
+
+            var player4 = new Player(newPlayerPos + new Vector2(87, 50), playerRadius, normalColor);
+            var player5 = new Player(newPlayerPos + new Vector2(0, 100), playerRadius, normalColor);
+            var player6 = new Player(newPlayerPos + new Vector2(-87, 50), playerRadius, normalColor);
+            var player7 = new Player(newPlayerPos + new Vector2(-87, -50), playerRadius, normalColor);
 
             playerList.Add(player1);
             playerList.Add(player2);
@@ -143,11 +148,12 @@ namespace MonoGame_Slime
             {
                 _collisionComponent.AddPlayer(player);
                 _gravityComponent.AddGameObject(player);
+                // world.AddObjectToWorldRotationList(player);
             }
 
 
-            var commonMaxDistance = 100f;
-            var commonMinDistance = 70f;
+            var commonMaxDistance = 90f;
+            var commonMinDistance = 60f;
 
             _constraintComponent.AddConstraintPair(player1, player2, commonMaxDistance, commonMinDistance);
             _constraintComponent.AddConstraintPair(player1, player3, commonMaxDistance, commonMinDistance);
@@ -162,6 +168,8 @@ namespace MonoGame_Slime
             _constraintComponent.AddConstraintPair(player5, player6, commonMaxDistance, commonMinDistance);
             _constraintComponent.AddConstraintPair(player6, player7, commonMaxDistance, commonMinDistance);
             _constraintComponent.AddConstraintPair(player7, player2, commonMaxDistance, commonMinDistance);
+
+
  
         }
 
@@ -234,10 +242,12 @@ namespace MonoGame_Slime
             // Physics (The following order matters!)
             
             _gravityComponent.Update(gameTime);
+            _collisionComponent.Update(gameTime);
             _constraintComponent.Update(gameTime);
             _collisionComponent.Update(gameTime);
-
             
+
+
             wall_rotate.rotation -= 0.05f;
 
 
@@ -266,7 +276,7 @@ namespace MonoGame_Slime
             _spriteBatch.DrawString(font, debugText_3, new Vector2(100, 300), Color.White);
             _spriteBatch.DrawString(font, debugText_4, new Vector2(100, 400), Color.White);
 
-            _constraintComponent.Draw(_spriteBatch);
+            // _constraintComponent.Draw(_spriteBatch);
 
             // End Draw
             _spriteBatch.End();

@@ -50,8 +50,8 @@ namespace MonoGame_Slime.GameCore
             rotation = _rotation;
 
             // Apply Scale
-            var scaleR = (float)boundBox.radius / (float)(image.Width / 2);
-            scale = new Vector2(scaleR, scaleR);
+            //var scaleR = (float)boundBox.radius / (float)(image.Width / 2);
+            scale = new Vector2(2f, 2f);
 
             color = _color;
             

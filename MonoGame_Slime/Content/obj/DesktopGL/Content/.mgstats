@@ -1,5 +1,5 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
 "C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Debug.spritefont","C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/bin/DesktopGL/Content/Debug.xnb","FontDescriptionProcessor","SpriteFontContent",2008,21538,0.1673631
-"C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Player.png","C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/bin/DesktopGL/Content/Player.xnb","TextureProcessor","Texture2DContent",1522,160085,0.0997718
+"C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Player.png","C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/bin/DesktopGL/Content/Player.xnb","TextureProcessor","Texture2DContent",470,19685,0.0943603
 "C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Wall.png","C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/bin/DesktopGL/Content/Wall.xnb","TextureProcessor","Texture2DContent",1273,360085,0.1040037
 "C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/World.png","C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/bin/DesktopGL/Content/World.xnb","TextureProcessor","Texture2DContent",1128448,3145813,0.1784108
