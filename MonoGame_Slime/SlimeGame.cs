@@ -51,12 +51,13 @@ namespace MonoGame_Slime
 
             // Graphics
             _graphics = new GraphicsDeviceManager(this);
+            
 
 
             // Physics
             _collisionComponent = new CollisionComponent();
             _gravityComponent = new GravityComponent();
-            _constraintComponent = new ConstraintComponent();
+            
 
             
             // Content 
@@ -75,6 +76,9 @@ namespace MonoGame_Slime
             _graphics.ApplyChanges();
 
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            _constraintComponent = new ConstraintComponent(_spriteBatch);
+
+
 
             // Load Recourses
             Arts.Load(Content);
@@ -111,11 +115,11 @@ namespace MonoGame_Slime
             // Add players
             var player1 = new Player(newPlayerPos, playerRadius, Color.White);
             var player2 = new Player(newPlayerPos + new Vector2(200, 200), playerRadius, Color.Red);
-            var player3 = new Player(newPlayerPos + new Vector2(-200, -200), playerRadius, Color.Red);
+            // var player3 = new Player(newPlayerPos + new Vector2(-200, -200), playerRadius, Color.Red);
 
             playerList.Add(player1);
             playerList.Add(player2);
-            playerList.Add(player3);
+            // playerList.Add(player3);
 
             // Physics
             foreach (var player in playerList)
@@ -123,6 +127,8 @@ namespace MonoGame_Slime
                 _collisionComponent.AddPlayer(player);
                 _gravityComponent.AddGameObject(player);
             }
+
+            _constraintComponent.AddConstraintPair(player1, player2, 250f);
         }
 
         private void AddWalls()
@@ -170,10 +176,11 @@ namespace MonoGame_Slime
             foreach (var player in playerList) player.Update(gameTime);
             foreach (var wall in wallList) wall.Update(gameTime);
 
-            // Physics
-            _collisionComponent.Update(gameTime);
+            // Physics (The following order matters!)
+            
             _gravityComponent.Update(gameTime);
             _constraintComponent.Update(gameTime);
+            _collisionComponent.Update(gameTime);
 
 
             base.Update(gameTime);
@@ -198,6 +205,7 @@ namespace MonoGame_Slime
             _spriteBatch.DrawString(font, debugText_3, new Vector2(100, 300), Color.Black);
             _spriteBatch.DrawString(font, debugText_4, new Vector2(100, 400), Color.Black);
 
+            _constraintComponent.Draw(_spriteBatch);
 
             // End Draw
             _spriteBatch.End();
@@ -233,6 +241,8 @@ namespace MonoGame_Slime
             return newVec;
 
         }
+
+
 
     }
 }

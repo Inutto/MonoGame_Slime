@@ -11,7 +11,7 @@ namespace MonoGame_Slime.GameCore
 
 
 
-    struct Circle
+    public struct Circle
     {
         public Vector2 position;
         public float radius;
@@ -25,7 +25,7 @@ namespace MonoGame_Slime.GameCore
     }
 
 
-    class Player : GameObject
+    public class Player : GameObject
     {
 
 
