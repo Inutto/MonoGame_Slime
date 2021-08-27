@@ -72,8 +72,6 @@ namespace MonoGame_Slime.GameCore
 
 
             var coll = eventArgs.coll;
-            var multiplyer = 2.0f;
-
            
             // Modify Compensation vec
             var compensationVec = eventArgs.compensationVec;
@@ -83,17 +81,19 @@ namespace MonoGame_Slime.GameCore
             if (coll is Wall)
             {
                 compensationMagnitude *= 1f;
+                velocity = new Vector2(velocity.X, 0f);
             }
             else
             {
                 compensationMagnitude *= 1f;
+                
             }
 
             // Move the player just out of the compensationvec direction
 
             var deltaDistance = compensationMagnitude * compensationVec;
-            SlimeGame.debugText_1 = compensationMagnitude.ToString();
             position += deltaDistance;
+            
             
             
 

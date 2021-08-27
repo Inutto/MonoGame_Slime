@@ -196,7 +196,6 @@ namespace MonoGame_Slime
             // Physics (The following order matters!)
             
             _gravityComponent.Update(gameTime);
-            _collisionComponent.Update(gameTime);
             _constraintComponent.Update(gameTime);
             _collisionComponent.Update(gameTime);
 

@@ -76,6 +76,7 @@ namespace MonoGame_Slime.Physics
                         newEventArgs.compensationVec *= new Vector2(-1,-1);
                         newEventArgs.coll = player2;
 
+                        // 2 -> 1
                         player1.OnCollision(eventArgs);
                     }
 
@@ -111,7 +112,8 @@ namespace MonoGame_Slime.Physics
                 var eventArgs = new CollisionEventArgs();
                 eventArgs.compensationVec = circle2Pos - circle1Pos;
                 eventArgs.compensationVec.Normalize();
-                eventArgs.compensationMagnitude = r1 + r2 - distance;
+                eventArgs.compensationMagnitude = (r1 + r2 - distance) / 2;
+                SlimeGame.debugText_2 = eventArgs.compensationMagnitude.ToString();
                 return eventArgs;
                 
             }
@@ -137,7 +139,7 @@ namespace MonoGame_Slime.Physics
 
 
         /// <summary>
-        /// Implementation of Collision
+        /// Implementation of Circle - Rectangle Collision
         /// </summary>
         /// <param name="rectanglePos"></param>
         /// <param name="circlePos"></param>
