@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using MonoGame.Extended;
-using MonoGame.Extended.Collisions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGame_Slime.Physics;
 
 namespace MonoGame_Slime.GameCore
 {
@@ -55,8 +54,11 @@ namespace MonoGame_Slime.GameCore
             base.Draw(spriteBatch);
 
             // Just draw the bound
+        }
 
-            
+        public virtual void OnCollision(CollisionEventArgs eventArgs)
+        {
+            // Implement this in child if needed
         }
 
     }

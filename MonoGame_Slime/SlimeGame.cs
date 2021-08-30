@@ -40,6 +40,9 @@ namespace MonoGame_Slime
         private CollisionComponent _collisionComponent;
         private GravityComponent _gravityComponent;
         private ConstraintComponent _constraintComponent;
+
+        // Score
+        public static int score = 0;
         
         // Debug
         private SpriteFont font;
@@ -204,11 +207,18 @@ namespace MonoGame_Slime
 
 
             // add rotating wall (not add to wallList)
-
             var wall_rotate_size = new Vector2(200, 200);
             var wall_rotate = new RotatingWall(worldCenter, wall_rotate_size);
 
             wallList.Add(wall_rotate);
+
+
+
+            // add pickups
+            var pickup_1 = new Pickups(worldCenter + new Vector2(200, 200), new Vector2(50, 50));
+            pickup_1.color = Color.Red;
+
+            wallList.Add(pickup_1);
 
 
 

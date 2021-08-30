@@ -55,7 +55,13 @@ namespace MonoGame_Slime.Physics
                     var eventArgs = isCollisionWithPlayer(player, wall);
                     if (eventArgs != null)
                     {
+                        // To Player
                         player.OnCollision(eventArgs);
+
+                        // To Wall (The compensation is always made from wall to players)
+                        eventArgs.coll = player;
+                        wall.OnCollision(eventArgs);
+                        
                     }
                 }
             }
