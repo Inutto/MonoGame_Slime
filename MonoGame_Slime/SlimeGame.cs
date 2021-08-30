@@ -22,26 +22,21 @@ namespace MonoGame_Slime
         public static int screenWidth = 1920;
         public static int screenHeight = 1080;
 
+        // World Constant
         public static float worldSizeMultiplier = 0.9f;
         public static int worldWidth = (int)(1024 * worldSizeMultiplier);
         public static int worldHeight = (int)(768 * worldSizeMultiplier);
-        
-    
-        // Input
-        private KeyboardState _keyboardState; // Global Key State
-
+       
         // World 
         private World world;
         private Vector2 worldCenter = new Vector2(screenWidth / 2, screenHeight / 2);
         private Vector2 worldSize = new Vector2(worldWidth, worldHeight);
 
-        private Wall wall_rotate;
-
         // GameObjects
         private List<Wall> wallList = new List<Wall>();
         private List<Player> playerList = new List<Player>();
 
-        // Physics (Collision -> Gravity -> Constraint)
+        // Physics 
         private CollisionComponent _collisionComponent;
         private GravityComponent _gravityComponent;
         private ConstraintComponent _constraintComponent;
@@ -211,18 +206,22 @@ namespace MonoGame_Slime
             // add rotating wall (not add to wallList)
 
             var wall_rotate_size = new Vector2(200, 200);
-            wall_rotate = new Wall(worldCenter, wall_rotate_size);
+            var wall_rotate = new RotatingWall(worldCenter, wall_rotate_size);
+
+            wallList.Add(wall_rotate);
 
 
 
             // Physics
             foreach (var wall in wallList)
             {
+                if(!(wall is RotatingWall))
+                {
+                    world.AddObjectToWorldRotationList(wall);
+                }
                 _collisionComponent.AddWall(wall);
-                world.AddObjectToWorldRotationList(wall);
+                
             }
-
-            _collisionComponent.AddWall(wall_rotate);
         }
 
 
@@ -247,10 +246,6 @@ namespace MonoGame_Slime
             _collisionComponent.Update(gameTime);
             
 
-
-            wall_rotate.rotation -= 0.05f;
-
-
             base.Update(gameTime);
         }
 
@@ -266,9 +261,6 @@ namespace MonoGame_Slime
             
             foreach(var wall in wallList) wall.Draw(_spriteBatch);
             foreach(var player in playerList) player.Draw(_spriteBatch);
-
-            // wall_rotate
-            wall_rotate.Draw(_spriteBatch);
 
             // Debug
             _spriteBatch.DrawString(font, debugText_1, new Vector2(100, 100), Color.White);

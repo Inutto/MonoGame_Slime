@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MonoGame_Slime.GameCore
 {
-    class Wall : GameObject
+    public class Wall : GameObject
     {
         // Collisions
         public Rectangle boundBox;
