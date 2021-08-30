@@ -14,7 +14,7 @@ namespace MonoGame_Slime
     {
 
         // Singleton
-        public static SlimeGame Instance { get; private set; }
+        public static SlimeGame Instance { get; set; }
 
         // Graphics
         private GraphicsDeviceManager _graphics;
@@ -34,7 +34,7 @@ namespace MonoGame_Slime
 
         // GameObjects
         private List<Wall> wallList = new List<Wall>();
-        private List<Player> playerList = new List<Player>();
+        public  List<Player> playerList = new List<Player>();
 
         // Physics 
         private CollisionComponent _collisionComponent;
@@ -61,7 +61,7 @@ namespace MonoGame_Slime
 
 
             // Physics
-            _collisionComponent = new CollisionComponent();
+            _collisionComponent = new CollisionComponent(this);
             _gravityComponent = new GravityComponent();
             
 
@@ -214,11 +214,32 @@ namespace MonoGame_Slime
 
 
 
-            // add pickups
-            var pickup_1 = new Pickups(worldCenter + new Vector2(200, 200), new Vector2(50, 50));
-            pickup_1.color = Color.Red;
+            // add pickups and spikes
+
+            var pickup_size = new Vector2(50, 50);
+            var pickup_position_offset = new Vector2(400, 200);
+
+            var pickup_1 = new Pickups(worldCenter + pickup_position_offset, pickup_size);
+            var pickup_2 = new Pickups(worldCenter - pickup_position_offset, pickup_size);
+
+
+            var spike_position_offset = pickup_position_offset * new Vector2(1, -1);
+            var spike_1 = new Spikes(worldCenter + spike_position_offset, pickup_size);
+            var spike_2 = new Spikes(worldCenter - spike_position_offset, pickup_size);
+
+
+            pickup_1.color = Color.Aqua;
+            pickup_2.color = Color.Aqua;
+
+
+            spike_1.color = Color.Red;
+            spike_2.color = Color.Red;
 
             wallList.Add(pickup_1);
+            wallList.Add(pickup_2);
+
+            wallList.Add(spike_1);
+            wallList.Add(spike_2);
 
 
 

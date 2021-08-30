@@ -18,8 +18,11 @@ namespace MonoGame_Slime.GameCore
         {
             // Disable the draw (by swtiching texture to null)
 
-            if(image != null) ++SlimeGame.score;
-            image = null;
+            if (isEnable)
+            {
+                ++SlimeGame.score;
+            }
+            Disable();    
             
         }
 

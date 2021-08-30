@@ -11,6 +11,7 @@ namespace MonoGame_Slime.GameCore
     {
         // Collisions
         public Rectangle boundBox;
+        public bool isEnable = true;
 
         public Wall(Vector2 _centerPosition, Vector2 _size, float _rotation = 0f)
         {
@@ -40,8 +41,15 @@ namespace MonoGame_Slime.GameCore
             originPosition = _centerPosition;
             color = Color.White;
 
-            
         }
+
+        public void Disable()
+        {
+            isEnable = false;
+            image = null;
+            boundBox = new Rectangle(0,0,0,0); // Zero size
+        }
+
 
         public override void Update(GameTime gameTime)
         {

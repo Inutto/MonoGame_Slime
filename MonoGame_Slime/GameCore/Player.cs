@@ -16,6 +16,8 @@ namespace MonoGame_Slime.GameCore
         public Vector2 position;
         public float radius;
 
+        
+
         public Circle(Vector2 _position, float _radius)
         {
             
@@ -27,7 +29,8 @@ namespace MonoGame_Slime.GameCore
 
     public class Player : GameObject
     {
-
+        // State
+        public bool isEnable = true;
 
         public Circle boundBox;
 
@@ -56,6 +59,13 @@ namespace MonoGame_Slime.GameCore
 
             color = _color;
             
+        }
+
+        public void Disable()
+        {
+            isEnable = false;
+            image = null;
+            boundBox = new Circle(Vector2.Zero, 0); // Zero size
         }
 
 
@@ -95,12 +105,6 @@ namespace MonoGame_Slime.GameCore
             var deltaDistance = compensationMagnitude * compensationVec;
             position += deltaDistance;
             
-            
-            
-
-            
-
-
         }
     }
 }

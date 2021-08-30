@@ -12,6 +12,7 @@ namespace MonoGame_Slime.Physics
         public GameObject coll;
         public Vector2 compensationVec;
         public float compensationMagnitude;
+        public Game game;
 
 
 
@@ -36,10 +37,16 @@ namespace MonoGame_Slime.Physics
     /// <summary>
     /// Collision System that contains all the objects's info
     /// </summary>
-    class CollisionComponent
+    public class CollisionComponent
     {
         List<Player> players = new List<Player>();         // Circle Player
         List<Wall> walls = new List<Wall>();               // Rectangle Walls
+        public Game game;
+
+        public CollisionComponent(Game game)
+        {
+            this.game = game;
+        }
 
 
 
@@ -55,6 +62,10 @@ namespace MonoGame_Slime.Physics
                     var eventArgs = isCollisionWithPlayer(player, wall);
                     if (eventArgs != null)
                     {
+
+                        eventArgs.game = game;
+
+
                         // To Player
                         player.OnCollision(eventArgs);
 
