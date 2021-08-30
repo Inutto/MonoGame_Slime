@@ -179,11 +179,11 @@ namespace MonoGame_Slime
             float wallOffsety = (worldSize.Y + wallWidth) / 2f;
 
             // add border walls
-            var wall_1 = new Wall(worldCenter + new Vector2(0, wallOffsety), boundBoxWallSizeHorizontal);
-            var wall_2 = new Wall(worldCenter + new Vector2(0, -wallOffsety), boundBoxWallSizeHorizontal);
+            var wall_1 = new NormalWall(worldCenter + new Vector2(0, wallOffsety), boundBoxWallSizeHorizontal);
+            var wall_2 = new NormalWall(worldCenter + new Vector2(0, -wallOffsety), boundBoxWallSizeHorizontal);
 
-            var wall_3 = new Wall(worldCenter + new Vector2(wallOffSetX, 0), boundBoxWallSizeVertical);
-            var wall_4 = new Wall(worldCenter + new Vector2(-wallOffSetX, 0), boundBoxWallSizeVertical);
+            var wall_3 = new NormalWall(worldCenter + new Vector2(wallOffSetX, 0), boundBoxWallSizeVertical);
+            var wall_4 = new NormalWall(worldCenter + new Vector2(-wallOffSetX, 0), boundBoxWallSizeVertical);
 
             wallList.Add(wall_1);
             wallList.Add(wall_2);
@@ -196,8 +196,8 @@ namespace MonoGame_Slime
             var wall_obs_size = new Vector2(100, 268);
 
 
-            var wall_obs_1 = new Wall(worldCenter + wall_obs_Offset, wall_obs_size);
-            var wall_obs_2 = new Wall(worldCenter - wall_obs_Offset, wall_obs_size);
+            var wall_obs_1 = new NormalWall(worldCenter + wall_obs_Offset, wall_obs_size);
+            var wall_obs_2 = new NormalWall(worldCenter - wall_obs_Offset, wall_obs_size);
 
             wallList.Add(wall_obs_1);
             wallList.Add(wall_obs_2);
