@@ -122,8 +122,10 @@ namespace MonoGame_Slime
 
 
             var normalColor = Color.White;
+            var notNormalColor = Color.Red;
 
             var player1 = new Player(newPlayerPos, playerRadius, normalColor);
+            player1.image = Arts.Player;
 
             var player2 = new Player(newPlayerPos + new Vector2(0, -100), playerRadius, normalColor);
             var player3 = new Player(newPlayerPos + new Vector2(87, -50), playerRadius, normalColor);
@@ -133,13 +135,14 @@ namespace MonoGame_Slime
             var player6 = new Player(newPlayerPos + new Vector2(-87, 50), playerRadius, normalColor);
             var player7 = new Player(newPlayerPos + new Vector2(-87, -50), playerRadius, normalColor);
 
-            playerList.Add(player1);
+            
             playerList.Add(player2);
             playerList.Add(player3);
             playerList.Add(player4);
             playerList.Add(player5);
             playerList.Add(player6);
             playerList.Add(player7);
+            playerList.Add(player1);
 
             // Physics
             foreach (var player in playerList)
@@ -160,10 +163,10 @@ namespace MonoGame_Slime
             _constraintComponent.AddConstraintPair(player1, player6, commonMaxDistance, commonMinDistance);
             _constraintComponent.AddConstraintPair(player1, player7, commonMaxDistance, commonMinDistance);
 
-            _constraintComponent.AddConstraintPair(player2, player3, commonMaxDistance, commonMinDistance);
+            //_constraintComponent.AddConstraintPair(player2, player3, commonMaxDistance, commonMinDistance);
             _constraintComponent.AddConstraintPair(player3, player4, commonMaxDistance, commonMinDistance);
             _constraintComponent.AddConstraintPair(player4, player5, commonMaxDistance, commonMinDistance);
-            _constraintComponent.AddConstraintPair(player5, player6, commonMaxDistance, commonMinDistance);
+           // _constraintComponent.AddConstraintPair(player5, player6, commonMaxDistance, commonMinDistance);
             _constraintComponent.AddConstraintPair(player6, player7, commonMaxDistance, commonMinDistance);
             _constraintComponent.AddConstraintPair(player7, player2, commonMaxDistance, commonMinDistance);
 
@@ -276,7 +279,6 @@ namespace MonoGame_Slime
             _constraintComponent.Update(gameTime);
             _collisionComponent.Update(gameTime);
             
-
             base.Update(gameTime);
         }
 
@@ -299,6 +301,8 @@ namespace MonoGame_Slime
             _spriteBatch.DrawString(font, debugText_3, new Vector2(100, 300), Color.White);
             _spriteBatch.DrawString(font, debugText_4, new Vector2(100, 400), Color.White);
 
+
+            // Draw Constraint
             // _constraintComponent.Draw(_spriteBatch);
 
             // End Draw
