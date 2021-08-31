@@ -117,6 +117,8 @@ namespace MonoGame_Slime
             // Player Parameters
             var newPlayerPos = worldCenter + new Vector2(0, -200f);
             var playerRadius = 20f;
+            var commonMaxDistance = 90f;
+            var commonMinDistance = 60f;
 
             // Add players
 
@@ -153,8 +155,7 @@ namespace MonoGame_Slime
             }
 
 
-            var commonMaxDistance = 90f;
-            var commonMinDistance = 60f;
+           
 
             _constraintComponent.AddConstraintPair(player1, player2, commonMaxDistance, commonMinDistance);
             _constraintComponent.AddConstraintPair(player1, player3, commonMaxDistance, commonMinDistance);
