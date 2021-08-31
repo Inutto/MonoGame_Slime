@@ -303,7 +303,7 @@ namespace MonoGame_Slime
 
 
             // Draw Constraint
-            // _constraintComponent.Draw(_spriteBatch);
+            _constraintComponent.Draw(_spriteBatch);
 
             // End Draw
             _spriteBatch.End();

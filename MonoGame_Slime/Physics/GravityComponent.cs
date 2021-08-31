@@ -20,19 +20,32 @@ namespace MonoGame_Slime.Physics
         {
             foreach(var obj in gravityObjectList)
             {
-                // Update Speed Value by gravity
-                var newSpeed = obj.velocity.Y + gravity;
-                if (newSpeed > maxSpeed)
+
+                Vector2 newSpeed = Vector2.Zero;
+                if(obj is Player)
                 {
-                    newSpeed = maxSpeed;
-                }
-                else if (newSpeed < -maxSpeed)
+                    // Update Speed by player gravity
+
+                    newSpeed = (obj as Player).gravityVec;
+
+                } else
                 {
-                    newSpeed = -maxSpeed;
+                    // Update Speed Value by gravity
+                    var newSpeedY = obj.velocity.Y + gravity;
+                    if (newSpeedY > maxSpeed)
+                    {
+                        newSpeedY = maxSpeed;
+                    }
+                    else if (newSpeedY < -maxSpeed)
+                    {
+                        newSpeedY = -maxSpeed;
+                    }
+
+                    newSpeed = new Vector2(obj.velocity.X, newSpeedY);
                 }
 
                 // Apply new speed 
-                obj.velocity = new Vector2(obj.velocity.X, newSpeed);
+                obj.velocity = newSpeed;
 
             }
         }

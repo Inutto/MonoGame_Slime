@@ -16,6 +16,9 @@ namespace MonoGame_Slime.GameCore
         public Vector2 position;
         public float radius;
 
+
+        
+
         
 
         public Circle(Vector2 _position, float _radius)
@@ -35,8 +38,13 @@ namespace MonoGame_Slime.GameCore
         public Circle boundBox;
 
         // Gravity
-        public float gravity = 25f;
-        public float maxSpeed = 300f;
+        public float gravityMultiplier = 1f;
+        public Vector2 gravityVec = new Vector2(0, 50f);
+        public Vector2 gravityVecNormal = new Vector2(0, 50f);
+
+        // Gravity Settings
+        public float gravity = 50f;
+        public float maxSpeed = 400f;
 
         public Player(Vector2 _centerPosition, float _radius, Color _color, float _rotation = 0f)
         {
@@ -75,7 +83,38 @@ namespace MonoGame_Slime.GameCore
 
             SlimeGame.debugText_1 = velocity.ToString();
 
+            UpdateGravityVec();
+
             base.Update(gameTime);
+        }
+
+
+        public void UpdateGravityVec()
+        {
+
+            var newSpeedY = velocity.Y + gravity;
+            if (newSpeedY > maxSpeed)
+            {
+                newSpeedY = maxSpeed;
+            }
+            else if (newSpeedY < -maxSpeed)
+            {
+                newSpeedY = -maxSpeed;
+            }
+
+            gravityVec = new Vector2(velocity.X, newSpeedY);
+
+        }
+
+
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            // Draw the circle boundry
+
+
+
+            base.Draw(spriteBatch);
         }
 
         public void OnCollision(CollisionEventArgs eventArgs)
@@ -91,13 +130,8 @@ namespace MonoGame_Slime.GameCore
 
             if (coll is Wall)
             {
-                compensationMagnitude *= 1f;
-                velocity = new Vector2(velocity.X, 0f);
-            }
-            else
-            {
-                compensationMagnitude *= 1f;
-                
+                // velocity = new Vector2(velocity.X, 0.1f);
+                gravityVec = GetGravityIncrement(compensationVec * compensationMagnitude);
             }
 
             // Move the player just out of the compensationvec direction
@@ -105,6 +139,22 @@ namespace MonoGame_Slime.GameCore
             var deltaDistance = compensationMagnitude * compensationVec;
             position += deltaDistance;
             
+        }
+
+
+        /// <summary>
+        /// Input the complete compensationVEc!
+        /// </summary>
+        /// <param name="compensationVec"></param>
+        /// <returns></returns>
+        public Vector2 GetGravityIncrement(Vector2 compensationVec)
+        {
+            var compensationMagnitude = compensationVec.Length();
+            var rad = Math.Acos(compensationVec.Y / compensationMagnitude);
+            var gravityVecMagnitude = compensationMagnitude / (float)Math.Cos(rad);
+            var gravityVec = new Vector2(0, gravityVecMagnitude);
+
+            return gravityVec + compensationVec;
         }
     }
 }
