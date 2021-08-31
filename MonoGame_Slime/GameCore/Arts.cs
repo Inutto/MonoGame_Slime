@@ -41,14 +41,14 @@ namespace MonoGame_Slime.GameCore
 
         }
 
-
-
         public static Texture2D LoadPlayerArt()
         {
             var rand = new Random();
             var randomIndex = rand.Next(0, 4);
             return PlayerRandom[randomIndex];
         }
+
+
 
         
 

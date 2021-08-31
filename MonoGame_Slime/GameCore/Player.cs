@@ -81,7 +81,7 @@ namespace MonoGame_Slime.GameCore
         {
            
 
-            SlimeGame.debugText_1 = velocity.ToString();
+            SlimeGame.debugText_1 = gravityVec.ToString();
 
             UpdateGravityVec();
 

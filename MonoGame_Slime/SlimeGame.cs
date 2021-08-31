@@ -184,12 +184,14 @@ namespace MonoGame_Slime
             float wallOffSetX = (worldSize.X + wallWidth) / 2f;
             float wallOffsety = (worldSize.Y + wallWidth) / 2f;
 
-            // add border walls
-            var wall_1 = new NormalWall(worldCenter + new Vector2(0, wallOffsety), boundBoxWallSizeHorizontal);
-            var wall_2 = new NormalWall(worldCenter + new Vector2(0, -wallOffsety), boundBoxWallSizeHorizontal);
+            var normalWallTexture = Arts.Wall;
 
-            var wall_3 = new NormalWall(worldCenter + new Vector2(wallOffSetX, 0), boundBoxWallSizeVertical);
-            var wall_4 = new NormalWall(worldCenter + new Vector2(-wallOffSetX, 0), boundBoxWallSizeVertical);
+            // add border walls
+            var wall_1 = new NormalWall(worldCenter + new Vector2(0, wallOffsety), boundBoxWallSizeHorizontal, normalWallTexture);
+            var wall_2 = new NormalWall(worldCenter + new Vector2(0, -wallOffsety), boundBoxWallSizeHorizontal, normalWallTexture);
+
+            var wall_3 = new NormalWall(worldCenter + new Vector2(wallOffSetX, 0), boundBoxWallSizeVertical, normalWallTexture);
+            var wall_4 = new NormalWall(worldCenter + new Vector2(-wallOffSetX, 0), boundBoxWallSizeVertical, normalWallTexture);
 
             wallList.Add(wall_1);
             wallList.Add(wall_2);
@@ -202,8 +204,8 @@ namespace MonoGame_Slime
             var wall_obs_size = new Vector2(100, 268);
 
 
-            var wall_obs_1 = new NormalWall(worldCenter + wall_obs_Offset, wall_obs_size);
-            var wall_obs_2 = new NormalWall(worldCenter - wall_obs_Offset, wall_obs_size);
+            var wall_obs_1 = new NormalWall(worldCenter + wall_obs_Offset, wall_obs_size, normalWallTexture);
+            var wall_obs_2 = new NormalWall(worldCenter - wall_obs_Offset, wall_obs_size, normalWallTexture);
 
             wallList.Add(wall_obs_1);
             wallList.Add(wall_obs_2);
@@ -211,7 +213,7 @@ namespace MonoGame_Slime
 
             // add rotating wall (not add to wallList)
             var wall_rotate_size = new Vector2(200, 200);
-            var wall_rotate = new RotatingWall(worldCenter, wall_rotate_size);
+            var wall_rotate = new RotatingWall(worldCenter, wall_rotate_size, normalWallTexture);
 
             wallList.Add(wall_rotate);
 
@@ -222,13 +224,13 @@ namespace MonoGame_Slime
             var pickup_size = new Vector2(50, 50);
             var pickup_position_offset = new Vector2(400, 200);
 
-            var pickup_1 = new Pickups(worldCenter + pickup_position_offset, pickup_size);
-            var pickup_2 = new Pickups(worldCenter - pickup_position_offset, pickup_size);
+            var pickup_1 = new Pickups(worldCenter + pickup_position_offset, pickup_size, normalWallTexture);
+            var pickup_2 = new Pickups(worldCenter - pickup_position_offset, pickup_size, normalWallTexture);
 
 
             var spike_position_offset = pickup_position_offset * new Vector2(1, -1);
-            var spike_1 = new Spikes(worldCenter + spike_position_offset, pickup_size);
-            var spike_2 = new Spikes(worldCenter - spike_position_offset, pickup_size);
+            var spike_1 = new Spikes(worldCenter + spike_position_offset, pickup_size, normalWallTexture);
+            var spike_2 = new Spikes(worldCenter - spike_position_offset, pickup_size, normalWallTexture);
 
 
             pickup_1.color = Color.Aqua;
@@ -303,7 +305,7 @@ namespace MonoGame_Slime
 
 
             // Draw Constraint
-            _constraintComponent.Draw(_spriteBatch);
+            // _constraintComponent.Draw(_spriteBatch);
 
             // End Draw
             _spriteBatch.End();

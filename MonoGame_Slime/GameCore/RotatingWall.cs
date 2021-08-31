@@ -11,7 +11,7 @@ namespace MonoGame_Slime.GameCore
 
         public float rotationSpeed = -0.07f;
 
-        public RotatingWall(Vector2 _centerPosition, Vector2 _size, float _rotation = 0f) : base(_centerPosition, _size, _rotation)
+        public RotatingWall(Vector2 _centerPosition, Vector2 _size, Texture2D texture, float _rotation = 0f) : base(_centerPosition, _size, texture, _rotation)
         {
             // nothing to add
         }

@@ -13,10 +13,10 @@ namespace MonoGame_Slime.GameCore
         public Rectangle boundBox;
         public bool isEnable = true;
 
-        public Wall(Vector2 _centerPosition, Vector2 _size, float _rotation = 0f)
+        public Wall(Vector2 _centerPosition, Vector2 _size, Texture2D texture, float _rotation = 0f)
         {
             // Graphics
-            image = Arts.Wall;
+            image = texture;
 
             var halfWidth = _size.X / 2;
             var halfHeight = _size.Y / 2;
@@ -33,7 +33,8 @@ namespace MonoGame_Slime.GameCore
             // Apply scale
             var scaleX = (float)boundBox.Width / (float)image.Width;
             var scaleY = (float)boundBox.Height / (float)image.Height;
-            scale = new Vector2(scaleX, scaleY);
+            var scaleMultiplier = 1.1f;
+            scale = new Vector2(scaleX, scaleY) * scaleMultiplier;
 
             // Transform
             position = _centerPosition;
