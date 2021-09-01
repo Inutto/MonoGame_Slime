@@ -1,14 +1,30 @@
 ﻿using System;
+using Microsoft.Xna.Framework;
 
 namespace MonoGame_Slime
 {
     public static class Program
     {
+
+
+        public static bool restart = true;
+
         [STAThread]
         static void Main()
         {
-            using (var game = new SlimeGame())
+
+            var game = new SlimeGame();
+
+            // Restart Detect
+            do
+            {
+                game.Exit();
+                Program.restart = false;
+                game = new SlimeGame();
                 game.Run();
+            }
+            while (Program.restart);
+
         }
     }
 }

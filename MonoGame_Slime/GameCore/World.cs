@@ -70,6 +70,8 @@ namespace MonoGame_Slime.GameCore
                 worldRotation += originSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
 
+            
+
 
         }
 

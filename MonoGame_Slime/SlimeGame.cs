@@ -58,14 +58,10 @@ namespace MonoGame_Slime
             // Graphics
             _graphics = new GraphicsDeviceManager(this);
             
-
-
             // Physics
             _collisionComponent = new CollisionComponent(this);
             _gravityComponent = new GravityComponent();
-            
 
-            
             // Content 
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
@@ -260,13 +256,17 @@ namespace MonoGame_Slime
         }
 
 
-
-
         protected override void Update(GameTime gameTime)
         {
             // Exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+
+            if (Keyboard.GetState().IsKeyDown(Keys.R))
+            {
+                Program.restart = true;
+                Exit();
+            }
 
             // Object
             world.Update(gameTime);
