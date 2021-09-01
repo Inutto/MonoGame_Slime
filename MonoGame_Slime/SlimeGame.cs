@@ -42,8 +42,8 @@ namespace MonoGame_Slime
         private ConstraintComponent _constraintComponent;
 
         // Score
-        public static int score = 0;
-        public static int scoreMax = 2;
+        public int score = 0;
+        public int scoreMax = 2;
 
         // Game Status
         public enum GAMESTATE { GAME, WIN, LOSE};

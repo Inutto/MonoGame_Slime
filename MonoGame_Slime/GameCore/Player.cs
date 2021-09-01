@@ -46,6 +46,10 @@ namespace MonoGame_Slime.GameCore
         public float gravity = 50f;
         public float maxSpeed = 400f;
 
+        // Timer 
+        public Timer timer_blink = new Timer();
+        public Timer timer_notblink = new Timer();
+
         public Player(Vector2 _centerPosition, float _radius, Color _color, float _rotation = 0f)
         {
 
@@ -79,13 +83,27 @@ namespace MonoGame_Slime.GameCore
 
         public override void Update(GameTime gameTime)
         {
-           
-
+        
             SlimeGame.debugText_1 = gravityVec.ToString();
 
             UpdateGravityVec();
 
+            timer_blink.Update(gameTime, Blink);
+            timer_notblink.Update(gameTime, BlinkBack);
+
+
+
             base.Update(gameTime);
+        }
+
+        public void Blink()
+        {
+            image = Arts.Player_2;
+        }
+
+        public void BlinkBack()
+        {
+            image = Arts.Player;
         }
 
 

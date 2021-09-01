@@ -9,6 +9,10 @@ namespace MonoGame_Slime.GameCore
 {
     class Pickups : Wall
     {
+
+        public bool startPlayerAnimation = false;
+        public Player targetPlayer;
+
         public Pickups(Vector2 _centerPosition, Vector2 _size, Texture2D texture, float _rotation = 0f) : base(_centerPosition, _size, texture, _rotation)
         {
             // nothing to add
@@ -22,8 +26,13 @@ namespace MonoGame_Slime.GameCore
 
             if (isEnable)
             {
-                ++SlimeGame.score;
-                if (SlimeGame.score == SlimeGame.scoreMax) slimegame.gameState = SlimeGame.GAMESTATE.WIN;
+                ++slimegame.score;
+                if (slimegame.score == slimegame.scoreMax) slimegame.gameState = SlimeGame.GAMESTATE.WIN;
+
+                startPlayerAnimation = true;
+                targetPlayer = slimegame.playerList[6];
+
+
             }
             Disable();    
             
@@ -33,10 +42,22 @@ namespace MonoGame_Slime.GameCore
         {
             // Draw the score!
 
-            SlimeGame.debugText_3 = string.Format("Score: {0}", SlimeGame.score);
-            SlimeGame.debugText_4 = string.Format("Target Score: {0}", SlimeGame.scoreMax);
+            if (startPlayerAnimation)
+            {
+                startPlayerAnimation = false;
+                StatUpdatePlayerTimer(targetPlayer, gameTime);
+            }
+
+
 
             base.Update(gameTime);
+        }
+
+        public void StatUpdatePlayerTimer(Player player, GameTime gameTime)
+        {
+            // Player Animation (Blink)
+            player.timer_blink.StartTimer(gameTime, 2000);
+            player.timer_notblink.StartTimer(gameTime, 4000);
         }
 
 

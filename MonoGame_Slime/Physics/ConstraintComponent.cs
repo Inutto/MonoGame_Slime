@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using MonoGame_Slime.Physics;
 using MonoGame_Slime.GameCore;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
