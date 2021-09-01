@@ -25,6 +25,7 @@ namespace MonoGame_Slime.GameCore
             foreach(var player in playerList)
             {
                 if(player.isEnable) player.Disable();
+                slimegame.gameState = SlimeGame.GAMESTATE.LOSE;
             }
             Disable();
             

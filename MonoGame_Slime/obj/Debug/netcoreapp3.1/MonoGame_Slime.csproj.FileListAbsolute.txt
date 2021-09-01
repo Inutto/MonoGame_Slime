@@ -36,3 +36,5 @@ C:\Users\u1330202\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\bin\Debug\netco
 C:\Users\u1330202\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\bin\Debug\netcoreapp3.1\Content\Player_3.xnb
 C:\Users\u1330202\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\bin\Debug\netcoreapp3.1\Content\Player_4.xnb
 C:\Users\u1330202\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\bin\Debug\netcoreapp3.1\Content\Player_5.xnb
+C:\Users\u1330202\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\bin\Debug\netcoreapp3.1\Content\GameLose.xnb
+C:\Users\u1330202\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\bin\Debug\netcoreapp3.1\Content\GameWin.xnb

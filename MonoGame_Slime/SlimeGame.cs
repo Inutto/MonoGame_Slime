@@ -43,6 +43,10 @@ namespace MonoGame_Slime
 
         // Score
         public static int score = 0;
+
+        // Game Status
+        public enum GAMESTATE { GAME, WIN, LOSE};
+        public GAMESTATE gameState = GAMESTATE.GAME;
         
         // Debug
         private SpriteFont font;
@@ -50,6 +54,8 @@ namespace MonoGame_Slime
         public static string debugText_2 = "";
         public static string debugText_3 = "";
         public static string debugText_4 = "";
+
+
 
 
         public SlimeGame()
@@ -65,6 +71,8 @@ namespace MonoGame_Slime
             // Content 
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+
+            
         }
 
         protected override void Initialize()
@@ -296,21 +304,55 @@ namespace MonoGame_Slime
             foreach(var wall in wallList) wall.Draw(_spriteBatch);
             foreach(var player in playerList) player.Draw(_spriteBatch);
 
-            // Debug
-            _spriteBatch.DrawString(font, debugText_1, new Vector2(100, 100), Color.White);
-            _spriteBatch.DrawString(font, debugText_2, new Vector2(100, 200), Color.White);
-            _spriteBatch.DrawString(font, debugText_3, new Vector2(100, 300), Color.White);
-            _spriteBatch.DrawString(font, debugText_4, new Vector2(100, 400), Color.White);
+            // Draw Debug
+            DebugDraw();
 
+            // Draw GameState
+            GameStateDraw();
 
             // Draw Constraint
-            _constraintComponent.Draw(_spriteBatch);
+            // _constraintComponent.Draw(_spriteBatch);
 
             // End Draw
             _spriteBatch.End();
             
 
             base.Draw(gameTime);
+        }
+
+        public void GameStateDraw()
+        {
+            switch (gameState)
+            {
+                case GAMESTATE.LOSE:
+                    OnGameLose();
+                    break;
+                case GAMESTATE.WIN:
+                    OnGameWin();
+                    break;
+            }
+        }
+
+        public void DebugDraw()
+        {
+            // Debug
+            _spriteBatch.DrawString(font, debugText_1, new Vector2(100, 100), Color.White);
+            _spriteBatch.DrawString(font, debugText_2, new Vector2(100, 200), Color.White);
+            _spriteBatch.DrawString(font, debugText_3, new Vector2(100, 300), Color.White);
+            _spriteBatch.DrawString(font, debugText_4, new Vector2(100, 400), Color.White);
+        }
+
+
+        public void OnGameWin()
+        {
+            var image = Arts.GameWin;
+            DrawNormalImage(_spriteBatch, image, worldCenter, Color.White);
+        }
+
+        public void OnGameLose()
+        {
+            var image = Arts.GameLose;
+            DrawNormalImage(_spriteBatch, image, worldCenter, Color.White);
         }
 
 
@@ -339,6 +381,16 @@ namespace MonoGame_Slime
 
             return newVec;
 
+        }
+
+        public static void DrawNormalImage(SpriteBatch spriteBatch, Texture2D image, Vector2 position, Color color, float rotation = 0f)
+        {
+            if (image != null)
+            {
+                var imageCenter = new Vector2(image.Width / 2, image.Height / 2);
+                var scale = 1f;
+                spriteBatch.Draw(image, position, null, color, rotation, imageCenter, scale, SpriteEffects.None, 0f);
+            }
         }
 
         

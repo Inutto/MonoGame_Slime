@@ -23,6 +23,9 @@ namespace MonoGame_Slime.GameCore
 
         public static Texture2D[] PlayerRandom = new Texture2D[5];
 
+        public static Texture2D GameLose { get; private set; }
+        public static Texture2D GameWin { get; private set; }
+
 
 
         public static void Load(ContentManager content)
@@ -37,6 +40,9 @@ namespace MonoGame_Slime.GameCore
                 var name = string.Format("Player_{0}", i + 1);
                 PlayerRandom[i] = content.Load<Texture2D>(name);
             }
+
+            GameLose = content.Load<Texture2D>("GameLose");
+            GameWin = content.Load<Texture2D>("GameWin");
 
 
         }

@@ -15,7 +15,7 @@ namespace MonoGame_Slime
 
             var game = new SlimeGame();
 
-            // Restart Detect
+            // Restart The Game PHISICALLY!
             do
             {
                 game.Exit();
