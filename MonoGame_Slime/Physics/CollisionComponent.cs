@@ -48,8 +48,6 @@ namespace MonoGame_Slime.Physics
             this.game = game;
         }
 
-
-
         public void Update(GameTime gameTime)
         {
 

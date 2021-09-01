@@ -113,7 +113,9 @@ namespace MonoGame_Slime.Physics
                 var pushDistance = distance - max;
                 pushVec.Normalize();
 
-                player2.position += pushVec * pushDistance;
+                player2.position += pushVec * pushDistance * 0.5f;
+                player1.position -= pushVec * pushDistance * 0.5f;
+
                 player2.velocity = new Vector2(0.1f, player2.velocity.Y);
 
             } else if(distance < min)
@@ -123,7 +125,11 @@ namespace MonoGame_Slime.Physics
                 var pushDistance = min - distance;
                 pushVec.Normalize();
 
-                player2.position += pushVec * pushDistance;
+                player2.position += pushVec * pushDistance * 0.5f;
+                player1.position -= pushVec * pushDistance * 0.5f;
+
+
+                player2.velocity = new Vector2(0.1f, player2.velocity.Y);
             }
 
 

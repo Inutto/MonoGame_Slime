@@ -47,6 +47,8 @@ namespace MonoGame_Slime.GameCore
                 var imageCenter = new Vector2(image.Width / 2, image.Height / 2);
                 spriteBatch.Draw(image, position, null, color, rotation, imageCenter, scale, SpriteEffects.None, 0f);
             }
+
+            
            
         }
 
