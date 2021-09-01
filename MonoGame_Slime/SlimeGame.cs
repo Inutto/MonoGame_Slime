@@ -43,6 +43,7 @@ namespace MonoGame_Slime
 
         // Score
         public static int score = 0;
+        public static int scoreMax = 2;
 
         // Game Status
         public enum GAMESTATE { GAME, WIN, LOSE};

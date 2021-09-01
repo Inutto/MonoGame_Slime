@@ -19,11 +19,14 @@ namespace MonoGame_Slime
             do
             {
                 game.Exit();
+                game = null;
                 Program.restart = false;
                 game = new SlimeGame();
                 game.Run();
             }
             while (Program.restart);
+
+            game = null;
 
         }
     }

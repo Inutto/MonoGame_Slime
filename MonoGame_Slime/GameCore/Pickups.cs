@@ -18,9 +18,12 @@ namespace MonoGame_Slime.GameCore
         {
             // Disable the draw (by swtiching texture to null)
 
+            var slimegame = eventArgs.game as SlimeGame;
+
             if (isEnable)
             {
                 ++SlimeGame.score;
+                if (SlimeGame.score == SlimeGame.scoreMax) slimegame.gameState = SlimeGame.GAMESTATE.WIN;
             }
             Disable();    
             
@@ -30,7 +33,8 @@ namespace MonoGame_Slime.GameCore
         {
             // Draw the score!
 
-            SlimeGame.debugText_4 = string.Format("Score: {0}", SlimeGame.score);
+            SlimeGame.debugText_3 = string.Format("Score: {0}", SlimeGame.score);
+            SlimeGame.debugText_4 = string.Format("Target Score: {0}", SlimeGame.scoreMax);
 
             base.Update(gameTime);
         }
