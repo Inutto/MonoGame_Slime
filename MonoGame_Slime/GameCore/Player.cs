@@ -62,7 +62,7 @@ namespace MonoGame_Slime.GameCore
 
             // Apply Scale
             //var scaleR = (float)boundBox.radius / (float)(image.Width / 2);
-            var scaleMultiplier = 1.9f;
+            var scaleMultiplier = 1.4f;
             scale = new Vector2(scaleMultiplier, scaleMultiplier);
 
             color = _color;

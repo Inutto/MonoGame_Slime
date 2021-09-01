@@ -117,12 +117,10 @@ namespace MonoGame_Slime
             // Player Parameters
             var newPlayerPos = worldCenter + new Vector2(0, -200f);
             var playerRadius = 20f;
-            var commonMaxDistance = 90f;
-            var commonMinDistance = 60f;
+            var commonMaxDistance = 60f;
+            var commonMinDistance = 40f;
 
             // Add players
-
-
             var normalColor = Color.White;
             var notNormalColor = Color.Red;
 

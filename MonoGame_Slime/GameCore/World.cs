@@ -54,7 +54,7 @@ namespace MonoGame_Slime.GameCore
 
             var originSpeed = rotationSpeed;
 
-            if (_keyboardState.IsKeyDown(Keys.LeftShift))
+            if (_keyboardState.IsKeyDown(Keys.Up))
             {
                 originSpeed *= rotationSpeedMultiplier;
             }
