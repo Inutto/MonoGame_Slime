@@ -236,11 +236,6 @@ namespace MonoGame_Slime
             var wall_left = new NormalWall(worldCenter + new Vector2(wallOffSetX, 0), boundBoxWallSizeVertical, Arts.World);
             var wall_right = new NormalWall(worldCenter + new Vector2(-wallOffSetX, 0), boundBoxWallSizeVertical, Arts.World);
 
-            
-
-            
-
-
             // add rotating wall (not add to wallList)
             var wall_rotate_size = new Vector2(70, 240);
             var wall_rotate = new RotatingWall(worldCenter, wall_rotate_size, normalWallTexture);

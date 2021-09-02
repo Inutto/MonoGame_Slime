@@ -98,7 +98,9 @@ namespace MonoGame_Slime.GameCore
 
                 // Assign Position
                 obj.position = newPos;
-                obj.rotation = worldRotation;
+
+                if (!(obj is IFreeRotation)) obj.rotation = worldRotation;
+
 
             }
 

@@ -7,7 +7,7 @@ using MonoGame_Slime.Physics;
 
 namespace MonoGame_Slime.GameCore
 {
-    class Pickups : Wall
+    class Pickups : Wall, IFreeRotation
     {
 
         public bool startPlayerAnimation = false;
