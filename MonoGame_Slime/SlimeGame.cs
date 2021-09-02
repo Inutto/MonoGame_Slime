@@ -174,9 +174,6 @@ namespace MonoGame_Slime
                 // world.AddObjectToWorldRotationList(player);
             }
 
-
-           
-
             _constraintComponent.AddConstraintPair(player1, player2, commonMaxDistance, commonMinDistance);
             _constraintComponent.AddConstraintPair(player1, player3, commonMaxDistance, commonMinDistance);
             _constraintComponent.AddConstraintPair(player1, player4, commonMaxDistance, commonMinDistance);
@@ -206,6 +203,8 @@ namespace MonoGame_Slime
             float wallOffsety = (worldSize.Y + wallWidth) / 2f;
 
             var normalWallTexture = Arts.Wall;
+            var spikeTexture = Arts.Spike_1;
+            
 
             // add border walls
             var wall_1 = new NormalWall(worldCenter + new Vector2(0, wallOffsety), boundBoxWallSizeHorizontal, normalWallTexture);
@@ -245,13 +244,13 @@ namespace MonoGame_Slime
             var pickup_size = new Vector2(50, 50);
             var pickup_position_offset = new Vector2(400, 200);
 
-            var pickup_1 = new Pickups(worldCenter + pickup_position_offset, pickup_size, normalWallTexture);
-            var pickup_2 = new Pickups(worldCenter - pickup_position_offset, pickup_size, normalWallTexture);
+            var pickup_1 = new Pickups(worldCenter + pickup_position_offset, pickup_size, Arts.Pickup);
+            var pickup_2 = new Pickups(worldCenter - pickup_position_offset, pickup_size, Arts.Pickup);
 
 
             var spike_position_offset = pickup_position_offset * new Vector2(1, -1);
-            var spike_1 = new Spikes(worldCenter + spike_position_offset, pickup_size, normalWallTexture);
-            var spike_2 = new Spikes(worldCenter - spike_position_offset, pickup_size, normalWallTexture);
+            var spike_1 = new Spikes(worldCenter + spike_position_offset, pickup_size * 1.3f, Arts.Spike_3);
+            var spike_2 = new Spikes(worldCenter - spike_position_offset, -pickup_size * 1.3f, Arts.Spike_3);
 
 
             pickup_1.color = Color.Aqua;

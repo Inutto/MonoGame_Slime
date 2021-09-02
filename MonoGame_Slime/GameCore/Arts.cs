@@ -26,6 +26,8 @@ namespace MonoGame_Slime.GameCore
         public static Texture2D Spike_2 { get; private set; }
         public static Texture2D Spike_3 { get; private set; }
 
+        public static Texture2D Pickup { get; private set; }
+
 
 
         // Body Parts
@@ -50,9 +52,6 @@ namespace MonoGame_Slime.GameCore
             Player_Blink = content.Load<Texture2D>("Player_Blink");
             Player_Happy = content.Load<Texture2D>("Player_Happy");
 
-
-
-
             World = content.Load<Texture2D>("World");
             Wall = content.Load<Texture2D>("Wall");
 
@@ -60,6 +59,7 @@ namespace MonoGame_Slime.GameCore
             Spike_2 = content.Load<Texture2D>("Spike_2");
             Spike_3 = content.Load<Texture2D>("Spike_3");
 
+            Pickup = content.Load<Texture2D>("Pickup");
 
 
             for (int i = 0; i < 6; ++i)

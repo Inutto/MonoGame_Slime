@@ -89,6 +89,7 @@ namespace MonoGame_Slime.GameCore
 
             timer_goto_blink.Update(gameTime, GotoBlink);
             timer_goto_normal.Update(gameTime, GotoNormal);
+
             timer_goto_happy.Update(gameTime, GotoHappy);
             timer_goto_normal_constant.Update(gameTime, GotoNormalConstant);
 
@@ -110,10 +111,11 @@ namespace MonoGame_Slime.GameCore
         public void GotoHappy(GameTime gameTime)
         {
             image = Arts.Player_Happy;
-            timer_goto_normal_constant.StartTimer(gameTime, 2000);
+            // timer_goto_blink.StartTimer(gameTime, 3000);
+            // timer_goto_normal.StartTimer(gameTime, 3200);
         }
 
-        public void GotoNormalConstant(GameTime gameTime)
+        public void GotoNormalConstant()
         {
             image = Arts.Player_Normal;
         }
