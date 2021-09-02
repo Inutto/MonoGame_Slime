@@ -132,6 +132,14 @@ namespace MonoGame_Slime
             var player1 = new Player(newPlayerPos, playerRadius, normalColor);
             player1.image = Arts.Player_Normal;
 
+            // Animation
+            var gameTime = new GameTime();
+
+            player1.timer_goto_blink.StartTimer(gameTime, 3000);
+            player1.timer_goto_normal.StartTimer(gameTime, 3200);
+
+
+
             var player2 = new Player(newPlayerPos + new Vector2(0, -100), playerRadius, normalColor);
             var player3 = new Player(newPlayerPos + new Vector2(87, -50), playerRadius, normalColor);
 

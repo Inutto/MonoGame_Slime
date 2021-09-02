@@ -36,6 +36,20 @@ namespace MonoGame_Slime.GameCore
             }
         }
 
+        public void Update(GameTime gameTime, Action<GameTime> action = null)
+        {
+            if (endTime > currentTime)
+            {
+                // counting timer
+                currentTime = gameTime.TotalGameTime.TotalMilliseconds;
+            }
+            else
+            {
+                endTime = 0;
+                action(gameTime);
+            }
+        }
+
 
     }
 }

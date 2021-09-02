@@ -42,8 +42,10 @@ namespace MonoGame_Slime.GameCore
         public float maxSpeed = 400f;
 
         // Timer 
-        public Timer timer_blink = new Timer();
-        public Timer timer_notblink = new Timer();
+        public Timer timer_goto_blink = new Timer();
+        public Timer timer_goto_normal = new Timer();
+        public Timer timer_goto_happy = new Timer();
+        public Timer timer_goto_normal_constant = new Timer();
 
         public Player(Vector2 _centerPosition, float _radius, Color _color, float _rotation = 0f)
         {
@@ -65,6 +67,8 @@ namespace MonoGame_Slime.GameCore
             scale = new Vector2(scaleMultiplier, scaleMultiplier);
 
             color = _color;
+
+            
             
         }
 
@@ -83,20 +87,33 @@ namespace MonoGame_Slime.GameCore
 
             UpdateGravityVec();
 
-            timer_blink.Update(gameTime, Blink);
-            timer_notblink.Update(gameTime, BlinkBack);
-
-
+            timer_goto_blink.Update(gameTime, GotoBlink);
+            timer_goto_normal.Update(gameTime, GotoNormal);
+            timer_goto_happy.Update(gameTime, GotoHappy);
+            timer_goto_normal_constant.Update(gameTime, GotoNormalConstant);
 
             base.Update(gameTime);
         }
 
-        public void Blink()
+        public void GotoBlink(GameTime gameTime)
         {
             image = Arts.Player_Blink;
+            timer_goto_blink.StartTimer(gameTime, 3000);
         }
 
-        public void BlinkBack()
+        public void GotoNormal(GameTime gameTime)
+        {
+            image = Arts.Player_Normal;
+            timer_goto_normal.StartTimer(gameTime, 3000);
+        }
+
+        public void GotoHappy(GameTime gameTime)
+        {
+            image = Arts.Player_Happy;
+            timer_goto_normal_constant.StartTimer(gameTime, 2000);
+        }
+
+        public void GotoNormalConstant(GameTime gameTime)
         {
             image = Arts.Player_Normal;
         }
