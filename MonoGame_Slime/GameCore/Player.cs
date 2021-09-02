@@ -66,7 +66,7 @@ namespace MonoGame_Slime.GameCore
 
             // Apply Scale
             //var scaleR = (float)boundBox.radius / (float)(image.Width / 2);
-            var scaleMultiplier = 1.4f;
+            var scaleMultiplier = 0.4f;
             scale = new Vector2(scaleMultiplier, scaleMultiplier);
 
             color = _color;
@@ -98,7 +98,7 @@ namespace MonoGame_Slime.GameCore
 
         public void Blink()
         {
-            image = Arts.Player_2;
+            image = Arts.PlayerRandom[0];
         }
 
         public void BlinkBack()

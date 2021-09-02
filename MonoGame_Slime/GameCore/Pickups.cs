@@ -57,7 +57,7 @@ namespace MonoGame_Slime.GameCore
         {
             // Player Animation (Blink)
             player.timer_blink.StartTimer(gameTime, 1);
-            player.timer_notblink.StartTimer(gameTime, 3000);
+            player.timer_notblink.StartTimer(gameTime, 500);
         }
 
 

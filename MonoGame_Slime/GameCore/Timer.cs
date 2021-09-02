@@ -11,7 +11,7 @@ namespace MonoGame_Slime.GameCore
     {
         public double delay = 0;
         public double currentTime = 0;
-        public double endTime = 100000;
+        public double endTime = 10000000;
 
 
         

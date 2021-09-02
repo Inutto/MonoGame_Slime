@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Player.png</SourceFile>
-  <SourceTime>2021-08-31T12:25:11.8825904-06:00</SourceTime>
+  <SourceTime>2021-09-02T10:37:56.206427-06:00</SourceTime>
   <DestFile>C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/bin/DesktopGL/Content/Player.xnb</DestFile>
-  <DestTime>2021-08-31T12:25:14.2998599-06:00</DestTime>
+  <DestTime>2021-09-02T10:40:40.6371752-06:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T10:17:54-06:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
