@@ -27,7 +27,9 @@ namespace MonoGame_Slime.GameCore
             if (isEnable)
             {
                 ++slimegame.score;
-                if (slimegame.score == slimegame.scoreMax) slimegame.gameState = SlimeGame.GAMESTATE.WIN;
+
+
+                // if (slimegame.score == slimegame.scoreMax) slimegame.gameState = SlimeGame.GAMESTATE.WIN;
 
                 startPlayerAnimation = true;
                 targetPlayer = slimegame.playerList[6];
