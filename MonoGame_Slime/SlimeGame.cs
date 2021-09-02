@@ -130,7 +130,7 @@ namespace MonoGame_Slime
             var notNormalColor = Color.Red;
 
             var player1 = new Player(newPlayerPos, playerRadius, normalColor);
-            player1.image = Arts.Player;
+            player1.image = Arts.Player_Normal;
 
             var player2 = new Player(newPlayerPos + new Vector2(0, -100), playerRadius, normalColor);
             var player3 = new Player(newPlayerPos + new Vector2(87, -50), playerRadius, normalColor);

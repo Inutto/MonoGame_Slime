@@ -122,7 +122,7 @@ namespace MonoGame_Slime.Physics
                 player1.position -= pushVec * pushDistance * 0.5f;
 
 
-                player2.rotation = -rad;
+                // player2.rotation = -rad;
 
                 player2.velocity = new Vector2(0.1f, player2.velocity.Y);
 

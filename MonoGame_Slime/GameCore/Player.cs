@@ -16,11 +16,6 @@ namespace MonoGame_Slime.GameCore
         public Vector2 position;
         public float radius;
 
-
-        
-
-        
-
         public Circle(Vector2 _position, float _radius)
         {
             
@@ -54,7 +49,7 @@ namespace MonoGame_Slime.GameCore
         {
 
 
-            // Graphics
+            // Graphics (Load Random Arts)
             image = Arts.LoadPlayerArt();
 
             // Boundbox (Circle)
@@ -98,12 +93,12 @@ namespace MonoGame_Slime.GameCore
 
         public void Blink()
         {
-            image = Arts.PlayerRandom[0];
+            image = Arts.Player_Blink;
         }
 
         public void BlinkBack()
         {
-            image = Arts.Player;
+            image = Arts.Player_Normal;
         }
 
 

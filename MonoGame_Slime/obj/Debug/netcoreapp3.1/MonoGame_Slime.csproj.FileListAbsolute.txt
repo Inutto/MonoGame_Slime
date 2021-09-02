@@ -38,3 +38,10 @@ C:\Users\u1330202\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\bin\Debug\netco
 C:\Users\u1330202\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\bin\Debug\netcoreapp3.1\Content\Player_5.xnb
 C:\Users\u1330202\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\bin\Debug\netcoreapp3.1\Content\GameLose.xnb
 C:\Users\u1330202\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\bin\Debug\netcoreapp3.1\Content\GameWin.xnb
+C:\Users\u1330202\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\bin\Debug\netcoreapp3.1\Content\Player_6.xnb
+C:\Users\u1330202\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\bin\Debug\netcoreapp3.1\Content\Player_Blink.xnb
+C:\Users\u1330202\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\bin\Debug\netcoreapp3.1\Content\Player_Happy.xnb
+C:\Users\u1330202\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\bin\Debug\netcoreapp3.1\Content\Player_Normal.xnb
+C:\Users\u1330202\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\bin\Debug\netcoreapp3.1\Content\Spike_1.xnb
+C:\Users\u1330202\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\bin\Debug\netcoreapp3.1\Content\Spike_2.xnb
+C:\Users\u1330202\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\bin\Debug\netcoreapp3.1\Content\Spike_3.xnb
