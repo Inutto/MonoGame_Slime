@@ -7,7 +7,7 @@ using MonoGame_Slime.Physics;
 
 namespace MonoGame_Slime.GameCore
 {
-    class Door : Wall
+    class Door : Wall, IFreeRotation
     {
         public Door(Vector2 _centerPosition, Vector2 _size, Texture2D texture, float _rotation = 0f) : base(_centerPosition, _size, texture, _rotation)
         {
