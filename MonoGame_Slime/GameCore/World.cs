@@ -49,7 +49,7 @@ namespace MonoGame_Slime.GameCore
         private void KeyboardControlUpdate(GameTime gameTime)
         {
             var _keyboardState = Keyboard.GetState();
-            var rotationSpeed = 1.7f; // the best para I can get
+            var rotationSpeed = 1.5f; // the best para I can get
             var rotationSpeedMultiplier = 2f;
 
             var originSpeed = rotationSpeed;

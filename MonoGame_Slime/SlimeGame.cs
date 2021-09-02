@@ -122,8 +122,9 @@ namespace MonoGame_Slime
             // Player Parameters
             var newPlayerPos = worldCenter + new Vector2(0, -200f);
             var playerRadius = 20f;
-            var commonMaxDistance = 60f;
-            var commonMinDistance = 40f;
+            var commonMaxDistance = 50f;
+            var commonMinDistance = 30f;
+            var playerParametersMultiplier = 0.65f;
 
             // Add players
             var normalColor = Color.White;
@@ -131,6 +132,7 @@ namespace MonoGame_Slime
 
             var player1 = new Player(newPlayerPos, playerRadius, normalColor);
             player1.image = Arts.Player_Normal;
+            player1.scale = Vector2.One * 0.32f;
 
             // Animation
             var gameTime = new GameTime();
@@ -139,14 +141,13 @@ namespace MonoGame_Slime
             player1.timer_goto_normal.StartTimer(gameTime, 3200);
 
 
+            var player2 = new Player(newPlayerPos + new Vector2(0, -100) * playerParametersMultiplier, playerRadius, normalColor);
+            var player3 = new Player(newPlayerPos + new Vector2(87, -50) * playerParametersMultiplier, playerRadius, normalColor);
 
-            var player2 = new Player(newPlayerPos + new Vector2(0, -100), playerRadius, normalColor);
-            var player3 = new Player(newPlayerPos + new Vector2(87, -50), playerRadius, normalColor);
-
-            var player4 = new Player(newPlayerPos + new Vector2(87, 50), playerRadius, normalColor);
-            var player5 = new Player(newPlayerPos + new Vector2(0, 100), playerRadius, normalColor);
-            var player6 = new Player(newPlayerPos + new Vector2(-87, 50), playerRadius, normalColor);
-            var player7 = new Player(newPlayerPos + new Vector2(-87, -50), playerRadius, normalColor);
+            var player4 = new Player(newPlayerPos + new Vector2(87, 50) * playerParametersMultiplier, playerRadius, normalColor);
+            var player5 = new Player(newPlayerPos + new Vector2(0, 100) * playerParametersMultiplier, playerRadius, normalColor);
+            var player6 = new Player(newPlayerPos + new Vector2(-87, 50) * playerParametersMultiplier, playerRadius, normalColor);
+            var player7 = new Player(newPlayerPos + new Vector2(-87, -50) * playerParametersMultiplier, playerRadius, normalColor);
 
 
             player2.image = Arts.Player_2;
@@ -181,10 +182,10 @@ namespace MonoGame_Slime
             _constraintComponent.AddConstraintPair(player1, player6, commonMaxDistance, commonMinDistance);
             _constraintComponent.AddConstraintPair(player1, player7, commonMaxDistance, commonMinDistance);
 
-            //_constraintComponent.AddConstraintPair(player2, player3, commonMaxDistance, commonMinDistance);
+            _constraintComponent.AddConstraintPair(player2, player3, commonMaxDistance, commonMinDistance);
             _constraintComponent.AddConstraintPair(player3, player4, commonMaxDistance, commonMinDistance);
             _constraintComponent.AddConstraintPair(player4, player5, commonMaxDistance, commonMinDistance);
-           // _constraintComponent.AddConstraintPair(player5, player6, commonMaxDistance, commonMinDistance);
+            // _constraintComponent.AddConstraintPair(player5, player6, commonMaxDistance, commonMinDistance);
             _constraintComponent.AddConstraintPair(player6, player7, commonMaxDistance, commonMinDistance);
             _constraintComponent.AddConstraintPair(player7, player2, commonMaxDistance, commonMinDistance);
 
@@ -195,7 +196,7 @@ namespace MonoGame_Slime
         private void AddWalls()
         {
             // Wall parameters
-            float wallWidth = 800f;
+            float wallWidth = 750f;
             var boundBoxWallSizeHorizontal = new Vector2(worldSize.X + 2 * wallWidth, wallWidth);
             var boundBoxWallSizeVertical = new Vector2(wallWidth, worldSize.Y + 2 * wallWidth);
 
@@ -204,7 +205,19 @@ namespace MonoGame_Slime
 
             var normalWallTexture = Arts.Wall;
             var spikeTexture = Arts.Spike_1;
-            
+
+
+            // add obstagles walls
+            var wall_obs_Offset = new Vector2(256, 250);
+            var wall_obs_size = new Vector2(100, 400);
+
+
+            var wall_obs_1 = new NormalWall(worldCenter + wall_obs_Offset, wall_obs_size, normalWallTexture);
+            var wall_obs_2 = new NormalWall(worldCenter - wall_obs_Offset, wall_obs_size, normalWallTexture);
+
+            wallList.Add(wall_obs_1);
+            wallList.Add(wall_obs_2);
+
 
             // add border walls
             var wall_1 = new NormalWall(worldCenter + new Vector2(0, wallOffsety), boundBoxWallSizeHorizontal, normalWallTexture);
@@ -218,21 +231,18 @@ namespace MonoGame_Slime
             wallList.Add(wall_3);
             wallList.Add(wall_4);
 
+            // add visual border wall (dont' add to the wallList)
 
-            // add obstagles walls
-            var wall_obs_Offset = new Vector2(256, 250);
-            var wall_obs_size = new Vector2(100, 268);
+            var wall_left = new NormalWall(worldCenter + new Vector2(wallOffSetX, 0), boundBoxWallSizeVertical, Arts.World);
+            var wall_right = new NormalWall(worldCenter + new Vector2(-wallOffSetX, 0), boundBoxWallSizeVertical, Arts.World);
 
+            
 
-            var wall_obs_1 = new NormalWall(worldCenter + wall_obs_Offset, wall_obs_size, normalWallTexture);
-            var wall_obs_2 = new NormalWall(worldCenter - wall_obs_Offset, wall_obs_size, normalWallTexture);
-
-            wallList.Add(wall_obs_1);
-            wallList.Add(wall_obs_2);
+            
 
 
             // add rotating wall (not add to wallList)
-            var wall_rotate_size = new Vector2(200, 200);
+            var wall_rotate_size = new Vector2(70, 240);
             var wall_rotate = new RotatingWall(worldCenter, wall_rotate_size, normalWallTexture);
 
             wallList.Add(wall_rotate);
