@@ -12,14 +12,17 @@ namespace MonoGame_Slime
         [STAThread]
         static void Main()
         {
-
-            var game = new SlimeGame();
-
+            SlimeGame game = null;
+            
             // Restart The Game PHISICALLY!
             do
             {
-                game.Exit();
-                game = null;
+                if (game != null)
+                {
+                    game.Exit();
+                    game.Dispose();
+                }
+                    
                 Program.restart = false;
                 game = new SlimeGame();
                 game.Run();

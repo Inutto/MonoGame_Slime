@@ -10,7 +10,7 @@ using System;
 
 namespace MonoGame_Slime
 {
-    public class SlimeGame : Game
+    public class SlimeGame : Game, IDisposable
     {
 
         // Singleton
