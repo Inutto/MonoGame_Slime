@@ -40,6 +40,13 @@ namespace MonoGame_Slime.GameCore
                 PlayerRandom[i] = content.Load<Texture2D>(name);
             }
 
+            Player_1 = content.Load<Texture2D>("Player_1");
+            Player_2 = content.Load<Texture2D>("Player_2");
+            Player_3 = content.Load<Texture2D>("Player_3");
+            Player_4 = content.Load<Texture2D>("Player_4");
+            Player_5 = content.Load<Texture2D>("Player_5");
+
+
             GameLose = content.Load<Texture2D>("GameLose");
             GameWin = content.Load<Texture2D>("GameWin");
 

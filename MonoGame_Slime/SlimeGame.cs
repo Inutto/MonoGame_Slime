@@ -140,7 +140,16 @@ namespace MonoGame_Slime
             var player6 = new Player(newPlayerPos + new Vector2(-87, 50), playerRadius, normalColor);
             var player7 = new Player(newPlayerPos + new Vector2(-87, -50), playerRadius, normalColor);
 
-            
+
+            player2.image = Arts.Player_2;
+            player3.image = Arts.Player_3;
+            player4.image = Arts.Player_4;
+            player5.image = Arts.Player_5;
+            player6.image = Arts.Player_2;
+            player7.image = Arts.Player_3;
+
+
+
             playerList.Add(player2);
             playerList.Add(player3);
             playerList.Add(player4);

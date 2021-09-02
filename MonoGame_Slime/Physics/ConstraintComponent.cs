@@ -104,16 +104,25 @@ namespace MonoGame_Slime.Physics
 
             // The actual distance
             var distance = SlimeGame.GetDistance(player1.position, player2.position);
+            
 
             if(distance > max)
             {
                 // Push player2 towards player1
                 var pushVec = (player1.position - player2.position);
                 var pushDistance = distance - max;
+
+                var rad = MathF.Atan2(pushVec.Y, pushVec.X);
+
+
+
                 pushVec.Normalize();
 
                 player2.position += pushVec * pushDistance * 0.5f;
                 player1.position -= pushVec * pushDistance * 0.5f;
+
+
+                player2.rotation = -rad;
 
                 player2.velocity = new Vector2(0.1f, player2.velocity.Y);
 
