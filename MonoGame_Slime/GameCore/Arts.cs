@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
@@ -45,6 +47,12 @@ namespace MonoGame_Slime.GameCore
         public static Texture2D GameWin { get; private set; }
 
 
+        // Music 
+
+        public static Song BackgroundMusic { get; private set; }
+
+
+
 
         public static void Load(ContentManager content)
         {
@@ -78,6 +86,8 @@ namespace MonoGame_Slime.GameCore
 
             GameLose = content.Load<Texture2D>("GameLose");
             GameWin = content.Load<Texture2D>("GameWin");
+
+            BackgroundMusic = content.Load<Song>("BackgroundMusic");
 
 
         }

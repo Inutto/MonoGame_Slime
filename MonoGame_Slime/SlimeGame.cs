@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame_Slime.GameCore;
 using MonoGame_Slime.Physics;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 using System.Collections.Generic;
 using System;
 
@@ -10,6 +12,8 @@ using System;
 
 namespace MonoGame_Slime
 {
+
+
     public class SlimeGame : Game, IDisposable
     {
 
@@ -104,10 +108,19 @@ namespace MonoGame_Slime
             // Font
             font = Content.Load<SpriteFont>("Debug");
 
+            // BGM
+            //MediaPlayer.Play(Arts.BackgroundMusic);
+            //MediaPlayer.IsRepeating = true;
+            //MediaPlayer.MediaStateChanged += OnMediaStateChanged;
+
 
         }
 
-
+        private void OnMediaStateChanged(object sender, EventArgs e)
+        {
+            MediaPlayer.Volume = 0.8f;
+            MediaPlayer.Play(Arts.BackgroundMusic);
+        }
 
         private void AddWorld()
         {
