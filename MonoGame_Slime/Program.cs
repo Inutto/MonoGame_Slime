@@ -37,9 +37,9 @@ namespace MonoGame_Slime
             PickupSound = dummy.Content.Load<SoundEffect>("PickupSound");
             
 
-            if (BackgroundMusic == null) BackgroundMusic = dummy.Content.Load<Song>("BackgroundMusic");
-            MediaPlayer.IsRepeating = true;
-            MediaPlayer.Play(BackgroundMusic);
+            //if (BackgroundMusic == null) BackgroundMusic = dummy.Content.Load<Song>("BackgroundMusic");
+            //MediaPlayer.IsRepeating = true;
+            //MediaPlayer.Play(BackgroundMusic);
             
 
                 // Music

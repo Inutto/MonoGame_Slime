@@ -10,6 +10,10 @@ namespace MonoGame_Slime.GameCore
 {
     class Door : Wall, IFreeRotation
     {
+
+        public bool startPlayerAnimation = false;
+        public Player targetPlayer;
+
         public Door(Vector2 _centerPosition, Vector2 _size, Texture2D texture, float _rotation = 0f) : base(_centerPosition, _size, texture, _rotation)
         {
 
@@ -26,6 +30,9 @@ namespace MonoGame_Slime.GameCore
                 if (slimegame.score == slimegame.scoreMax)
                 {
 
+                    startPlayerAnimation = true;
+                    targetPlayer = slimegame.playerList[6];
+
                     var pickupSound = slimegame.Content.Load<SoundEffect>("PickupSound");
                     pickupSound.Play();
                     slimegame.gameState = SlimeGame.GAMESTATE.WIN;
@@ -35,6 +42,26 @@ namespace MonoGame_Slime.GameCore
             }
                 
 
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            // Draw the score!
+
+            if (startPlayerAnimation)
+            {
+                startPlayerAnimation = false;
+                StatUpdatePlayerTimer(targetPlayer, gameTime);
+            }
+
+            base.Update(gameTime);
+        }
+
+        public void StatUpdatePlayerTimer(Player player, GameTime gameTime)
+        {
+
+            player.timer_goto_happy.StartTimer(gameTime, 0);
+            player.timer_goto_normal_constant.StartTimer(gameTime, 2000);
         }
     }
 }

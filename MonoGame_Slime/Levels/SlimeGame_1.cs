@@ -20,7 +20,7 @@ namespace MonoGame_Slime
 
         public SlimeGame_1()
         {
-            this.scoreMax = 4;
+            this.scoreMax = 2;
         }
 
         protected override void AddPlayers()
@@ -139,9 +139,9 @@ namespace MonoGame_Slime
             var pickup_position_offset_others = new Vector2(-400, 200);
 
             var pickup_1 = new Pickups(worldCenter + pickup_position_offset, pickup_size, Arts.Pickup);
-            var pickup_2 = new Pickups(worldCenter - pickup_position_offset, pickup_size, Arts.Pickup);
+            //var pickup_2 = new Pickups(worldCenter - pickup_position_offset, pickup_size, Arts.Pickup);
 
-            var pickup_3 = new Pickups(worldCenter + pickup_position_offset_others, pickup_size, Arts.Pickup);
+            //var pickup_3 = new Pickups(worldCenter + pickup_position_offset_others, pickup_size, Arts.Pickup);
             var pickup_4 = new Pickups(worldCenter - pickup_position_offset_others, pickup_size, Arts.Pickup);
 
 
@@ -149,22 +149,22 @@ namespace MonoGame_Slime
 
 
             pickup_1.color = Color.Aqua;
-            pickup_2.color = Color.Aqua;
+            //pickup_2.color = Color.Aqua;
 
-            pickup_3.color = Color.Aqua;
+            //pickup_3.color = Color.Aqua;
             pickup_4.color = Color.Aqua;
 
 
             wallList.Add(pickup_1);
-            wallList.Add(pickup_2);
-            wallList.Add(pickup_3);
+            //wallList.Add(pickup_2);
+            //wallList.Add(pickup_3);
             wallList.Add(pickup_4);
 
 
 
             // add door
 
-            var door = new Door(worldCenter + new Vector2(0, -300), pickup_size, Arts.Pickup);
+            var door = new Door(worldCenter + new Vector2(-50, 300), pickup_size, Arts.Pickup);
             door.color = Color.Yellow;
             wallList.Add(door);
 
