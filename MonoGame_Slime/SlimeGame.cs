@@ -124,7 +124,8 @@ namespace MonoGame_Slime
 
         protected virtual void AddWorld()
         {
-
+            // Create World Instance
+            world = new World(worldCenter, worldSize);
         }
 
         protected virtual void AddPlayers()
@@ -146,8 +147,17 @@ namespace MonoGame_Slime
 
             if (Keyboard.GetState().IsKeyDown(Keys.R))
             {
-                Program.restart = true;
-                Exit();
+                GotoCurrentLevel();
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.P))
+            {
+                GotoNextLevel();
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.O))
+            {
+                GotoPreviousLevel();
             }
 
             // Object
@@ -236,6 +246,25 @@ namespace MonoGame_Slime
             Program.restart = true;
             Exit();
 
+        }
+
+        public void GotoNextLevel()
+        {
+            var current = Program.currentLevel;
+            current = Math.Min(Program.maxLevel, current + 1);
+            GotoLevel(current);
+        }
+
+        public void GotoPreviousLevel()
+        {
+            var current = Program.currentLevel;
+            current = Math.Max(Program.minLevel, current - 1);
+            GotoLevel(current);
+        }
+
+        public void GotoCurrentLevel()
+        {
+            GotoLevel(Program.currentLevel);
         }
 
 

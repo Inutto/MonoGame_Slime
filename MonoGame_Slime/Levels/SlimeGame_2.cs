@@ -14,28 +14,9 @@ namespace MonoGame_Slime
 {
 
 
-    public class SlimeGame_1 : SlimeGame, IDisposable
+    public class SlimeGame_2 : SlimeGame, IDisposable
     {
 
-
-        public SlimeGame_1()
-        {
-
-            //// Graphics
-            //_graphics = new GraphicsDeviceManager(this);
-
-            //// Physics
-            //_collisionComponent = new CollisionComponent(this);
-            //_gravityComponent = new GravityComponent();
-
-            //// Content 
-            //Content.RootDirectory = "Content";
-            //IsMouseVisible = true;
-
-            
-
-
-        }
 
         protected override void AddPlayers()
         {
@@ -127,16 +108,7 @@ namespace MonoGame_Slime
             var spikeTexture = Arts.Spike_1;
 
 
-            // add obstagles walls
-            var wall_obs_Offset = new Vector2(256, 250);
-            var wall_obs_size = new Vector2(100, 400);
-
-
-            var wall_obs_1 = new NormalWall(worldCenter + wall_obs_Offset, wall_obs_size, normalWallTexture);
-            var wall_obs_2 = new NormalWall(worldCenter - wall_obs_Offset, wall_obs_size, normalWallTexture);
-
-            wallList.Add(wall_obs_1);
-            wallList.Add(wall_obs_2);
+           
 
 
             // add border walls
@@ -158,12 +130,7 @@ namespace MonoGame_Slime
 
 
 
-            // add rotating wall 
-            var wall_rotate_size = new Vector2(70, 240);
-            var wall_rotate_1 = new RotatingWall(worldCenter, wall_rotate_size, normalWallTexture);
-
-
-            wallList.Add(wall_rotate_1);
+           
 
 
 

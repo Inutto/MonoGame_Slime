@@ -11,6 +11,9 @@ namespace MonoGame_Slime
         public static int currentLevel = 1;
         public static bool restart = true;
 
+        public static int maxLevel = 2;
+        public static int minLevel = 1;
+
 
         [STAThread]
         static void Main()
@@ -37,7 +40,19 @@ namespace MonoGame_Slime
                 }
                     
                 Program.restart = false;
-                game = new SlimeGame_1();
+
+
+                switch (currentLevel)
+                {
+                    case 1:
+                        game = new SlimeGame_1();
+                        break;
+                    case 2:
+                        game = new SlimeGame_2();
+                        break;
+                        
+                }
+
                 game.Run();
             }
             while (Program.restart);
