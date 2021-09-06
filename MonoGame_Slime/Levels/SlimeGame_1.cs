@@ -20,21 +20,7 @@ namespace MonoGame_Slime
 
         public SlimeGame_1()
         {
-
-            //// Graphics
-            //_graphics = new GraphicsDeviceManager(this);
-
-            //// Physics
-            //_collisionComponent = new CollisionComponent(this);
-            //_gravityComponent = new GravityComponent();
-
-            //// Content 
-            //Content.RootDirectory = "Content";
-            //IsMouseVisible = true;
-
-            
-
-
+            this.scoreMax = 4;
         }
 
         protected override void AddPlayers()
@@ -124,19 +110,8 @@ namespace MonoGame_Slime
             float wallOffsety = (worldSize.Y + wallWidth) / 2f;
 
             var normalWallTexture = Arts.Wall;
-            var spikeTexture = Arts.Spike_1;
 
-
-            // add obstagles walls
-            var wall_obs_Offset = new Vector2(256, 250);
-            var wall_obs_size = new Vector2(100, 400);
-
-
-            var wall_obs_1 = new NormalWall(worldCenter + wall_obs_Offset, wall_obs_size, normalWallTexture);
-            var wall_obs_2 = new NormalWall(worldCenter - wall_obs_Offset, wall_obs_size, normalWallTexture);
-
-            wallList.Add(wall_obs_1);
-            wallList.Add(wall_obs_2);
+           
 
 
             // add border walls
@@ -157,42 +132,33 @@ namespace MonoGame_Slime
             var wall_right = new NormalWall(worldCenter + new Vector2(-wallOffSetX, 0), boundBoxWallSizeVertical, Arts.World);
 
 
-
-            // add rotating wall 
-            var wall_rotate_size = new Vector2(70, 240);
-            var wall_rotate_1 = new RotatingWall(worldCenter, wall_rotate_size, normalWallTexture);
-
-
-            wallList.Add(wall_rotate_1);
-
-
-
             // add pickups and spikes
 
             var pickup_size = new Vector2(50, 50);
             var pickup_position_offset = new Vector2(400, 200);
+            var pickup_position_offset_others = new Vector2(-400, 200);
 
             var pickup_1 = new Pickups(worldCenter + pickup_position_offset, pickup_size, Arts.Pickup);
             var pickup_2 = new Pickups(worldCenter - pickup_position_offset, pickup_size, Arts.Pickup);
 
+            var pickup_3 = new Pickups(worldCenter + pickup_position_offset_others, pickup_size, Arts.Pickup);
+            var pickup_4 = new Pickups(worldCenter - pickup_position_offset_others, pickup_size, Arts.Pickup);
 
-            var spike_position_offset = pickup_position_offset * new Vector2(1, -1);
-            var spike_1 = new Spikes(worldCenter + spike_position_offset, pickup_size * 1.3f, Arts.Spike_3);
-            var spike_2 = new Spikes(worldCenter - spike_position_offset, -pickup_size * 1.3f, Arts.Spike_3);
+
+
 
 
             pickup_1.color = Color.Aqua;
             pickup_2.color = Color.Aqua;
 
+            pickup_3.color = Color.Aqua;
+            pickup_4.color = Color.Aqua;
 
-            spike_1.color = Color.Red;
-            spike_2.color = Color.Red;
 
             wallList.Add(pickup_1);
             wallList.Add(pickup_2);
-
-            wallList.Add(spike_1);
-            wallList.Add(spike_2);
+            wallList.Add(pickup_3);
+            wallList.Add(pickup_4);
 
 
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
 using MonoGame_Slime.Physics;
 
 namespace MonoGame_Slime.GameCore
@@ -22,7 +23,10 @@ namespace MonoGame_Slime.GameCore
             var slimegame = eventArgs.game as SlimeGame;
             var playerList = slimegame.playerList;
 
-            foreach(var player in playerList)
+            var spikeSound = slimegame.Content.Load<SoundEffect>("SpikeSound");
+            spikeSound.Play();
+
+            foreach (var player in playerList)
             {
                 if(player.isEnable) player.Disable();
                 slimegame.gameState = SlimeGame.GAMESTATE.LOSE;

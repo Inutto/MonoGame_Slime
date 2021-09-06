@@ -218,6 +218,12 @@
 /processorParam:TextureFormat=Color
 /build:Spike_3.png
 
+#begin SpikeSound.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SpikeSound.wav
+
 #begin Wall.png
 /importer:TextureImporter
 /processor:TextureProcessor
