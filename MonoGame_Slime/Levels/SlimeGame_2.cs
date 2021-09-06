@@ -152,8 +152,8 @@ namespace MonoGame_Slime
             pickup_2.color = Color.Aqua;
 
 
-            spike_1.color = Color.Red;
-            spike_2.color = Color.Red;
+            spike_1.color = Color.White;
+            spike_2.color = Color.White;
 
             wallList.Add(pickup_1);
             wallList.Add(pickup_2);

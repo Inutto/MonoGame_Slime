@@ -96,3 +96,5 @@ C:\Users\u1330202\OneDrive - University of Utah\Documents\GitHub\MonoGame_Slime\
 C:\Users\u1330202\OneDrive - University of Utah\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\obj\Debug\netcoreapp3.1\MonoGame_Slime.genruntimeconfig.cache
 C:\Users\u1330202\OneDrive - University of Utah\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\bin\Debug\netcoreapp3.1\Content\BackgroundMusic.ogg
 C:\Users\u1330202\OneDrive - University of Utah\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\bin\Debug\netcoreapp3.1\Content\BackgroundMusic.xnb
+C:\Users\u1330202\OneDrive - University of Utah\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\bin\Debug\netcoreapp3.1\Content\PickupSound.xnb
+C:\Users\u1330202\OneDrive - University of Utah\Documents\GitHub\MonoGame_Slime\MonoGame_Slime\bin\Debug\netcoreapp3.1\Content\BackgroundMusic_SFX.xnb

@@ -21,7 +21,7 @@ namespace MonoGame_Slime
         public static SlimeGame Instance { get; set; }
 
         // Graphics
-        public  GraphicsDeviceManager _graphics;
+        public GraphicsDeviceManager _graphics;
         public SpriteBatch _spriteBatch;
         public static int screenWidth = 1920;
         public static int screenHeight = 1080;
@@ -53,6 +53,11 @@ namespace MonoGame_Slime
         public enum GAMESTATE { GAME, WIN, LOSE};
         public GAMESTATE gameState = GAMESTATE.GAME;
 
+        // Dummy
+        public bool dummymode = false;
+        public Song music;
+
+
         // Debug
         public SpriteFont font;
         public static string debugText_1 = "";
@@ -80,10 +85,31 @@ namespace MonoGame_Slime
             
         }
 
+        public SlimeGame(bool isDummy)
+        {
+            dummymode = true;
+
+            // Graphics
+            _graphics = new GraphicsDeviceManager(this);
+
+            // Content 
+            Content.RootDirectory = "Content";
+            IsMouseVisible = true;
+        }
+
+
         protected override void Initialize()
         {
 
             base.Initialize();
+
+            if (dummymode) {
+                music = Content.Load<Song>("BackgroundMusic");
+                MediaPlayer.IsRepeating = true;
+                MediaPlayer.Play(music);
+                return;
+            } 
+
 
             // Full Screen 
             _graphics.PreferredBackBufferWidth = screenWidth;
@@ -116,11 +142,11 @@ namespace MonoGame_Slime
 
         }
 
-        protected void OnMediaStateChanged(object sender, EventArgs e)
-        {
-            MediaPlayer.Volume = 0.8f;
-            MediaPlayer.Play(Arts.BackgroundMusic);
-        }
+        //protected void OnMediaStateChanged(object sender, EventArgs e)
+        //{
+        //    MediaPlayer.Volume = 0.8f;
+        //    MediaPlayer.Play(Arts.BackgroundMusic);
+        //}
 
         protected virtual void AddWorld()
         {
@@ -141,6 +167,10 @@ namespace MonoGame_Slime
 
         protected override void Update(GameTime gameTime)
         {
+
+            if (dummymode) return;
+
+
             // Exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
@@ -177,6 +207,9 @@ namespace MonoGame_Slime
 
         protected override void Draw(GameTime gameTime)
         {
+
+            if (dummymode) return;
+
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // Drawing
@@ -231,6 +264,9 @@ namespace MonoGame_Slime
         {
             var image = Arts.GameWin;
             DrawNormalImage(_spriteBatch, image, worldCenter, Color.White);
+
+            // Goto Next Level (without consent)
+            
         }
 
         public void OnGameLose()

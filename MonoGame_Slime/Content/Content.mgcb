@@ -19,6 +19,12 @@
 /processorParam:Quality=Best
 /build:BackgroundMusic.mp3
 
+#begin BackgroundMusic_SFX.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:BackgroundMusic_SFX.wav
+
 #begin Debug.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
@@ -61,6 +67,12 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Pickup.png
+
+#begin PickupSound.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:PickupSound.wav
 
 #begin Player_1.png
 /importer:TextureImporter
