@@ -4,26 +4,28 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Debug.spritefont</File>
-    <File>C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/GameLose.png</File>
-    <File>C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/GameWin.png</File>
-    <File>C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Pickup.png</File>
-    <File>C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Player_1.png</File>
-    <File>C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Player_2.png</File>
-    <File>C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Player_3.png</File>
-    <File>C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Player_4.png</File>
-    <File>C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Player_5.png</File>
-    <File>C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Player_6.png</File>
-    <File>C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Player_Blink.png</File>
-    <File>C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Player_Happy.png</File>
-    <File>C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Player_Normal.png</File>
-    <File>C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Spike_1.png</File>
-    <File>C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Spike_2.png</File>
-    <File>C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Spike_3.png</File>
-    <File>C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Wall.png</File>
-    <File>C:/Users/u1330202/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/World.png</File>
+    <File>C:/Users/u1330202/OneDrive - University of Utah/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/BackgroundMusic.mp3</File>
+    <File>C:/Users/u1330202/OneDrive - University of Utah/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Debug.spritefont</File>
+    <File>C:/Users/u1330202/OneDrive - University of Utah/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/GameLose.png</File>
+    <File>C:/Users/u1330202/OneDrive - University of Utah/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/GameWin.png</File>
+    <File>C:/Users/u1330202/OneDrive - University of Utah/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Pickup.png</File>
+    <File>C:/Users/u1330202/OneDrive - University of Utah/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Player_1.png</File>
+    <File>C:/Users/u1330202/OneDrive - University of Utah/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Player_2.png</File>
+    <File>C:/Users/u1330202/OneDrive - University of Utah/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Player_3.png</File>
+    <File>C:/Users/u1330202/OneDrive - University of Utah/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Player_4.png</File>
+    <File>C:/Users/u1330202/OneDrive - University of Utah/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Player_5.png</File>
+    <File>C:/Users/u1330202/OneDrive - University of Utah/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Player_6.png</File>
+    <File>C:/Users/u1330202/OneDrive - University of Utah/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Player_Blink.png</File>
+    <File>C:/Users/u1330202/OneDrive - University of Utah/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Player_Happy.png</File>
+    <File>C:/Users/u1330202/OneDrive - University of Utah/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Player_Normal.png</File>
+    <File>C:/Users/u1330202/OneDrive - University of Utah/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Spike_1.png</File>
+    <File>C:/Users/u1330202/OneDrive - University of Utah/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Spike_2.png</File>
+    <File>C:/Users/u1330202/OneDrive - University of Utah/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Spike_3.png</File>
+    <File>C:/Users/u1330202/OneDrive - University of Utah/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/Wall.png</File>
+    <File>C:/Users/u1330202/OneDrive - University of Utah/Documents/GitHub/MonoGame_Slime/MonoGame_Slime/Content/World.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

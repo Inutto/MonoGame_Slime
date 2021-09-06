@@ -8,7 +8,7 @@ namespace MonoGame_Slime
     public static class Program
     {
         public static Song BackgroundMusic;
-
+        public static int currentLevel = 1;
         public static bool restart = true;
 
 
@@ -37,7 +37,7 @@ namespace MonoGame_Slime
                 }
                     
                 Program.restart = false;
-                game = new SlimeGame();
+                game = new SlimeGame_1();
                 game.Run();
             }
             while (Program.restart);

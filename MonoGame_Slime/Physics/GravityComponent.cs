@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace MonoGame_Slime.Physics
 {
-    class GravityComponent
+    public class GravityComponent
     {
         public List<GameObject> gravityObjectList = new List<GameObject>();
 

@@ -50,16 +50,12 @@ namespace MonoGame_Slime.GameCore
                 StatUpdatePlayerTimer(targetPlayer, gameTime);
             }
 
-
-
             base.Update(gameTime);
         }
 
         public void StatUpdatePlayerTimer(Player player, GameTime gameTime)
         {
 
-            player.timer_goto_blink.StartTimer(gameTime, 3000);
-            player.timer_goto_normal.StartTimer(gameTime, 3200);
             player.timer_goto_happy.StartTimer(gameTime, 0);
             player.timer_goto_normal_constant.StartTimer(gameTime, 2000);
         }

@@ -128,7 +128,7 @@ namespace MonoGame_Slime.Physics
                 eventArgs.compensationVec = circle2Pos - circle1Pos;
                 eventArgs.compensationVec.Normalize();
                 eventArgs.compensationMagnitude = (r1 + r2 - distance) / 2;
-                SlimeGame.debugText_2 = eventArgs.compensationMagnitude.ToString();
+                // SlimeGame.debugText_2 = eventArgs.compensationMagnitude.ToString();
                 return eventArgs;
                 
             }

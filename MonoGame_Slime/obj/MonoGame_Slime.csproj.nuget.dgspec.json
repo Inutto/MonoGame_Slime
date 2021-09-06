@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\u1330202\\Documents\\GitHub\\MonoGame_Slime\\MonoGame_Slime\\MonoGame_Slime.csproj": {}
+    "C:\\Users\\u1330202\\OneDrive - University of Utah\\Documents\\GitHub\\MonoGame_Slime\\MonoGame_Slime\\MonoGame_Slime.csproj": {}
   },
   "projects": {
-    "C:\\Users\\u1330202\\Documents\\GitHub\\MonoGame_Slime\\MonoGame_Slime\\MonoGame_Slime.csproj": {
+    "C:\\Users\\u1330202\\OneDrive - University of Utah\\Documents\\GitHub\\MonoGame_Slime\\MonoGame_Slime\\MonoGame_Slime.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\u1330202\\Documents\\GitHub\\MonoGame_Slime\\MonoGame_Slime\\MonoGame_Slime.csproj",
+        "projectUniqueName": "C:\\Users\\u1330202\\OneDrive - University of Utah\\Documents\\GitHub\\MonoGame_Slime\\MonoGame_Slime\\MonoGame_Slime.csproj",
         "projectName": "MonoGame_Slime",
-        "projectPath": "C:\\Users\\u1330202\\Documents\\GitHub\\MonoGame_Slime\\MonoGame_Slime\\MonoGame_Slime.csproj",
+        "projectPath": "C:\\Users\\u1330202\\OneDrive - University of Utah\\Documents\\GitHub\\MonoGame_Slime\\MonoGame_Slime\\MonoGame_Slime.csproj",
         "packagesPath": "C:\\Users\\u1330202\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\u1330202\\Documents\\GitHub\\MonoGame_Slime\\MonoGame_Slime\\obj\\",
+        "outputPath": "C:\\Users\\u1330202\\OneDrive - University of Utah\\Documents\\GitHub\\MonoGame_Slime\\MonoGame_Slime\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

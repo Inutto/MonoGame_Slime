@@ -21,7 +21,7 @@ namespace MonoGame_Slime.Physics
     /// <summary>
     /// Define the Comstraint Between 2 players. player only.
     /// </summary>
-    class ConstraintComponent
+    public class ConstraintComponent
     {
         List<ConstraintPairArgs> constraintPairList = new List<ConstraintPairArgs>();
 

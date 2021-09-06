@@ -83,7 +83,7 @@ namespace MonoGame_Slime.GameCore
         public override void Update(GameTime gameTime)
         {
         
-            SlimeGame.debugText_1 = gravityVec.ToString();
+            // SlimeGame.debugText_1 = gravityVec.ToString();
 
             UpdateGravityVec();
 
